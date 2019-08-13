@@ -10,16 +10,16 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.StandardCharsets;
 
-public class StartDownLoad implements WC3Message {
+public class StartDownload implements WC3Message {
 
     private byte fromPlayerID = 0;
 
-    public StartDownLoad()
+    public StartDownload()
     {
 
     }
 
-    public StartDownLoad(ByteBuffer b)
+    public StartDownload(ByteBuffer b)
     {
         //
         //

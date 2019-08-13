@@ -19,21 +19,17 @@ public class GameLoadedSelf implements WC3Message {
 
     public GameLoadedSelf(ByteBuffer b)
     {
-        //
-        //
 
     }
 
     @Override
     public byte[] assemble()
     {
-        ByteBuffer b = ByteBuffer.allocate(8);
+        ByteBuffer b = ByteBuffer.allocate(4);
         b.order(ByteOrder.LITTLE_ENDIAN);
 
         b.put(WC3Message.HEADER);
         b.put(WC3Message.GAMELOADEDSELF);
-//        b.putShort((short) 4);
-
 
         return b.array();
     }

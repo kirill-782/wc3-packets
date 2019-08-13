@@ -21,21 +21,18 @@ public class GameLoadedOthers implements WC3Message {
 
     public GameLoadedOthers(ByteBuffer b)
     {
-        //
-        //
-
         this.playerID = b.get();
     }
 
     @Override
     public byte[] assemble()
     {
-        ByteBuffer b = ByteBuffer.allocate(8);
+        ByteBuffer b = ByteBuffer.allocate(5);
         b.order(ByteOrder.LITTLE_ENDIAN);
 
         b.put(WC3Message.HEADER);
         b.put(WC3Message.GAMELOADEDOTHERS);
-        b.putShort((short) 2);
+        b.putShort((short) 5);
 
         b.put(this.playerID);
 
