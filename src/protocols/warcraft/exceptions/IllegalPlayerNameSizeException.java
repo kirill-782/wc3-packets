@@ -2,8 +2,16 @@ package protocols.warcraft.exceptions;
 
 public class IllegalPlayerNameSizeException extends WC3Exception {
 
-    public IllegalPlayerNameSizeException()
+    private String field;
+
+    public IllegalPlayerNameSizeException(String field)
     {
-        super("PlayerName size too long");
+        super( field + " size too long");
+        this.field = field;
     }
+
+    public String getField() {
+        return field;
+    }
+
 }

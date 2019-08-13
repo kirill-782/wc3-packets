@@ -64,7 +64,7 @@ public class SlotInfoJoin implements WC3Message {
     public byte[] assemble() throws IllegalByteSizeException {
 
         if(this.externalIP != null && this.externalIP.length != 4)
-            throw new IllegalByteSizeException("externalIP must have size 4 or null");
+            throw new IllegalByteSizeException("externalIP", 4);
 
         byte[] encodedSlotInfo = Util.EncodeSlotInfo(this.slots, this.randomSeed, this.layoutStyle, this.slotsForPlayers);
 

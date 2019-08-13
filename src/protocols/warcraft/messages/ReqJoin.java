@@ -38,7 +38,7 @@ public class ReqJoin implements WC3Message {
         byte[] nameRaw = Util.getNullTremilaned(b);
 
         if (nameRaw.length > 15 || nameRaw.length == 0)
-            throw new IllegalPlayerNameSizeException();
+            throw new IllegalPlayerNameSizeException("playerName");
 
         this.name = new String(nameRaw, StandardCharsets.UTF_8);
         b.position(b.position() + 6);
@@ -52,7 +52,7 @@ public class ReqJoin implements WC3Message {
         byte[] nameRaw = this.name.getBytes(StandardCharsets.UTF_8);
 
         if( nameRaw.length > 15 || nameRaw.length == 0)
-            throw new IllegalPlayerNameSizeException();
+            throw new IllegalPlayerNameSizeException("playerName");
 
         ByteBuffer b = ByteBuffer.allocate( nameRaw.length + 30);
         b.order(ByteOrder.LITTLE_ENDIAN);
@@ -75,7 +75,7 @@ public class ReqJoin implements WC3Message {
         if(this.internalIP == null)
             b.putInt(0);
         else if( this.internalIP.length != 4 )
-            throw new IllegalByteSizeException("internalIP must have size 4");
+            throw new IllegalByteSizeException("internalIP", 4);
         else
             b.put(this.internalIP);
 

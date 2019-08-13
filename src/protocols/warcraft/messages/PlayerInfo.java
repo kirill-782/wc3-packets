@@ -30,7 +30,7 @@ public class PlayerInfo implements WC3Message {
         byte[] playerNameByte = Util.getNullTremilaned(b);
 
         if(playerNameByte.length > 15)
-            throw new IllegalPlayerNameSizeException();
+            throw new IllegalPlayerNameSizeException("playerName");
 
         this.playerName = new String(playerNameByte, Charset.forName("UTF-8"));
 
@@ -61,14 +61,14 @@ public class PlayerInfo implements WC3Message {
         int playerNameSize = this.playerName.getBytes(StandardCharsets.UTF_8).length;
 
         if(playerNameSize > 15) {
-            throw new IllegalPlayerNameSizeException();
+            throw new IllegalPlayerNameSizeException("playerName");
         }
 
         if(this.internalIP != null && this.extrenalIP.length != 4)
-            throw new IllegalByteSizeException("externalIP must have size 4 or null");
+            throw new IllegalByteSizeException("externalIP", 4);
 
         if(this.internalIP != null && this.internalIP.length != 4)
-            throw new IllegalByteSizeException("internalIP must have size 4 or null");
+            throw new IllegalByteSizeException("internalIP", 4);
 
         ByteBuffer b = ByteBuffer.allocate(playerNameSize + 40 );
         b.order(ByteOrder.LITTLE_ENDIAN);
