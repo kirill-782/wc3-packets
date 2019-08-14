@@ -13,7 +13,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class Main {
-    public static void main2( String[] args) throws Exception
+    public static void main( String[] args) throws Exception
     {
         //ip 185.248.103.124
         //port 6177
@@ -105,7 +105,7 @@ public class Main {
 
     static Selector selector = null;
 
-    public static void main( String[] args) throws Exception
+    public static void main2( String[] args) throws Exception
     {
         ByteBuffer b = ByteBuffer.allocate((int) (1024*1024*1024*1.5));
 
