@@ -107,6 +107,10 @@ public class Main {
 
     public static void main( String[] args) throws Exception
     {
+        ByteBuffer b = ByteBuffer.allocate((int) (1024*1024*1024*1.5));
+
+
+
         String ip = "185.248.103.124";
         int port = 6177;
 

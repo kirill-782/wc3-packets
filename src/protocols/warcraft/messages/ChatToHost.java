@@ -1,6 +1,9 @@
 package protocols.warcraft.messages;
 
+import protocols.warcraft.Constants;
 import protocols.warcraft.WC3Message;
+import protocols.warcraft.exceptions.IllegalMessageSizeException;
+import protocols.warcraft.exceptions.IllegalPlayerIDException;
 import protocols.warcraft.exceptions.WC3Exception;
 import protocols.warcraft.util.ChatExtraFlag;
 import protocols.warcraft.util.ChatFlag;
@@ -71,10 +74,19 @@ public class ChatToHost implements WC3Message {
         if(flag == ChatFlag.MESSAGE || flag == ChatFlag.MESSAGEEXTRA)
         {
             byte[] messageRaw = this.message.getBytes(UTF_8);
+
+            if( messageRaw.length > 254 )
+                throw new IllegalMessageSizeException(messageRaw.length, 254);
+
             int size = 8 + toPlayerIDs.size() + messageRaw.length;
 
             if(flag == ChatFlag.MESSAGEEXTRA)
+            {
                 size += 4;
+
+                if( messageRaw.length > 127 )
+                    throw new IllegalMessageSizeException(messageRaw.length, 127);
+            }
 
             ByteBuffer b = ByteBuffer.allocate(size);
 
@@ -82,9 +94,50 @@ public class ChatToHost implements WC3Message {
             b.put(CHATTOHOST);
             b.putShort((short) size);
 
-            // TODO
+            b.put((byte) toPlayerIDs.size());
+            for (Byte i :
+                    toPlayerIDs) {
+                if( i > Constants.MAXPLAYERS || i < 1)
+                    throw new IllegalPlayerIDException("toPlayerID", i);
 
+                b.put(i);
+            }
+
+            b.put(this.fromPlayerID);
+            b.put(this.flag.getType());
+
+            if(this.flag == ChatFlag.MESSAGEEXTRA)
+                b.put(this.extraFlag.getFlag());
+
+            b.put(messageRaw);
+            b.put((byte) 0);
+
+            return b.array();
         }
-        return new byte[0];
+        else
+        {
+            int size = 8 + toPlayerIDs.size();
+
+            ByteBuffer b = ByteBuffer.allocate(size);
+            b.put(HEADER);
+            b.put(CHATTOHOST);
+            b.putShort((short) size);
+
+            b.put((byte) toPlayerIDs.size());
+            for (Byte i :
+                    toPlayerIDs) {
+                if( i > Constants.MAXPLAYERS || i < 1)
+                    throw new IllegalPlayerIDException("toPlayerID", i);
+
+                b.put(i);
+            }
+
+            b.put(this.fromPlayerID);
+            b.put(this.flag.getType());
+            b.put(this.byteValue);
+
+            return b.array();
+        }
+
     }
 }
