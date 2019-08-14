@@ -123,12 +123,13 @@ public class ChatFromHost implements WC3Message {
         if (this.fromPlayerID > Constants.MAXPLAYERS || this.fromPlayerID < 1)
             throw new IllegalPlayerIDException("fromPlayerID", this.fromPlayerID);
 
-        int size = 7 + this.toPlayerIDs.size() + messageRaw.length;
+        int size = 8 + this.toPlayerIDs.size() + messageRaw.length;
 
         if( this.flag == ChatFlag.MESSAGEEXTRA )
             size += 4;
 
         ByteBuffer b = ByteBuffer.allocate(size);
+        b.order(ByteOrder.LITTLE_ENDIAN);
         b.put(HEADER);
         b.put(CHATFROMHOST);
         b.putShort((short) size);

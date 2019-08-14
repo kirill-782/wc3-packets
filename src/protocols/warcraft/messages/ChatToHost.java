@@ -89,12 +89,14 @@ public class ChatToHost implements WC3Message {
             }
 
             ByteBuffer b = ByteBuffer.allocate(size);
+            b.order(ByteOrder.LITTLE_ENDIAN);
 
             b.put(HEADER);
             b.put(CHATTOHOST);
             b.putShort((short) size);
 
             b.put((byte) toPlayerIDs.size());
+
             for (Byte i :
                     toPlayerIDs) {
                 if( i > Constants.MAXPLAYERS || i < 1)
@@ -119,6 +121,7 @@ public class ChatToHost implements WC3Message {
             int size = 8 + toPlayerIDs.size();
 
             ByteBuffer b = ByteBuffer.allocate(size);
+            b.order(ByteOrder.LITTLE_ENDIAN);
             b.put(HEADER);
             b.put(CHATTOHOST);
             b.putShort((short) size);
@@ -139,5 +142,59 @@ public class ChatToHost implements WC3Message {
             return b.array();
         }
 
+    }
+
+    public ArrayList<Byte> getToPlayerIDs() {
+        return toPlayerIDs;
+    }
+
+    public ChatToHost setToPlayerIDs(ArrayList<Byte> toPlayerIDs) {
+        this.toPlayerIDs = toPlayerIDs;
+        return this;
+    }
+
+    public byte getFromPlayerID() {
+        return fromPlayerID;
+    }
+
+    public ChatToHost setFromPlayerID(byte fromPlayerID) {
+        this.fromPlayerID = fromPlayerID;
+        return this;
+    }
+
+    public ChatFlag getFlag() {
+        return flag;
+    }
+
+    public ChatToHost setFlag(ChatFlag flag) {
+        this.flag = flag;
+        return this;
+    }
+
+    public byte getByteValue() {
+        return byteValue;
+    }
+
+    public ChatToHost setByteValue(byte byteValue) {
+        this.byteValue = byteValue;
+        return this;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public ChatToHost setMessage(String message) {
+        this.message = message;
+        return this;
+    }
+
+    public ChatExtraFlag getExtraFlag() {
+        return extraFlag;
+    }
+
+    public ChatToHost setExtraFlag(ChatExtraFlag extraFlag) {
+        this.extraFlag = extraFlag;
+        return this;
     }
 }
