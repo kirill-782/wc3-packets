@@ -1,8 +1,10 @@
 package protocols.warcraft.messages;
 
+import protocols.warcraft.Constants;
 import protocols.warcraft.Messages;
 import protocols.warcraft.WC3Message;
 import protocols.warcraft.exceptions.IllegalByteSizeException;
+import protocols.warcraft.exceptions.IllegalPlayerIDException;
 import protocols.warcraft.exceptions.IllegalPlayerNameSizeException;
 import protocols.warcraft.exceptions.WC3Exception;
 import protocols.warcraft.util.Util;
@@ -20,15 +22,19 @@ public class StartDownload implements WC3Message {
 
     }
 
-    public StartDownload(ByteBuffer b)
-    {
+    public StartDownload(ByteBuffer b) throws IllegalPlayerIDException {
         b.getInt();
         this.fromPlayerID = b.get();
+
+        if (this.fromPlayerID > Constants.MAXPLAYERS || this.fromPlayerID < 1)
+            throw new IllegalPlayerIDException("fromPlayerID", this.fromPlayerID);
     }
 
     @Override
-    public byte[] assemble()
-    {
+    public byte[] assemble() throws IllegalPlayerIDException {
+        if (this.fromPlayerID > Constants.MAXPLAYERS || this.fromPlayerID < 1)
+            throw new IllegalPlayerIDException("fromPlayerID", this.fromPlayerID);
+
         ByteBuffer b = ByteBuffer.allocate(8);
         b.order(ByteOrder.LITTLE_ENDIAN);
 
