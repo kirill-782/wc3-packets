@@ -10,7 +10,7 @@ public class PongToHost implements WC3Message {
     private int pongValue;
 
     public PongToHost(ByteBuffer b) {
-        b.order(ByteOrder.LITTLE_ENDIAN);
+
         this.pongValue = b.getInt(4);
     }
 

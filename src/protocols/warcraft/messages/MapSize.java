@@ -9,8 +9,8 @@ import java.nio.ByteBuffer;
 
 public class MapSize implements WC3Message {
 
-    MapSizeFlag flag;
-    long mapSize;
+    private MapSizeFlag flag;
+    private long mapSize;
 
     public MapSize()
     {
@@ -25,7 +25,7 @@ public class MapSize implements WC3Message {
     }
 
     @Override
-    public byte[] assemble() throws WC3Exception {
+    public byte[] assemble() {
         byte[] unknown = {1,0,0,0};
 
         ByteBuffer b = ByteBuffer.allocate(13);

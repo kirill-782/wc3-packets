@@ -28,8 +28,6 @@ public class ChatFromHost implements WC3Message {
     }
 
     public ChatFromHost(ByteBuffer b) throws WC3Exception {
-        b.order(ByteOrder.LITTLE_ENDIAN);
-        b.position(4);
 
         int toPlayerIDsSize = Byte.toUnsignedInt(b.get());
 
@@ -64,51 +62,6 @@ public class ChatFromHost implements WC3Message {
 
 
         this.message = new String(messageRaw, StandardCharsets.UTF_8);
-    }
-
-    public ArrayList<Byte> getToPlayerIDs() {
-        return toPlayerIDs;
-    }
-
-    public ChatFromHost setToPlayerIDs(ArrayList<Byte> toPlayerIDs) {
-        this.toPlayerIDs = toPlayerIDs;
-        return this;
-    }
-
-    public byte getFromPlayerID() {
-        return fromPlayerID;
-    }
-
-    public ChatFromHost setFromPlayerID(byte fromPlayerID) {
-        this.fromPlayerID = fromPlayerID;
-        return this;
-    }
-
-    public ChatFlag getFlag() {
-        return flag;
-    }
-
-    public ChatFromHost setFlag(ChatFlag flag) {
-        this.flag = flag;
-        return this;
-    }
-
-    public ChatExtraFlag getFlagExtra() {
-        return flagExtra;
-    }
-
-    public ChatFromHost setFlagExtra(ChatExtraFlag flagExtra) {
-        this.flagExtra = flagExtra;
-        return this;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public ChatFromHost setMessage(String message) {
-        this.message = message;
-        return this;
     }
 
     @Override
@@ -156,4 +109,51 @@ public class ChatFromHost implements WC3Message {
         return b.array();
 
     }
+
+    public ArrayList<Byte> getToPlayerIDs() {
+        return toPlayerIDs;
+    }
+
+    public ChatFromHost setToPlayerIDs(ArrayList<Byte> toPlayerIDs) {
+        this.toPlayerIDs = toPlayerIDs;
+        return this;
+    }
+
+    public byte getFromPlayerID() {
+        return fromPlayerID;
+    }
+
+    public ChatFromHost setFromPlayerID(byte fromPlayerID) {
+        this.fromPlayerID = fromPlayerID;
+        return this;
+    }
+
+    public ChatFlag getFlag() {
+        return flag;
+    }
+
+    public ChatFromHost setFlag(ChatFlag flag) {
+        this.flag = flag;
+        return this;
+    }
+
+    public ChatExtraFlag getFlagExtra() {
+        return flagExtra;
+    }
+
+    public ChatFromHost setFlagExtra(ChatExtraFlag flagExtra) {
+        this.flagExtra = flagExtra;
+        return this;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public ChatFromHost setMessage(String message) {
+        this.message = message;
+        return this;
+    }
+
+
 }

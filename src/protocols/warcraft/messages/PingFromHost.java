@@ -11,7 +11,6 @@ public class PingFromHost implements WC3Message {
     private int pingValue;
 
     public PingFromHost(ByteBuffer b) {
-        b.order(ByteOrder.LITTLE_ENDIAN);
         this.pingValue = b.getInt(4);
     }
 

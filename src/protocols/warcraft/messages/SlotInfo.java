@@ -24,8 +24,7 @@ public class SlotInfo implements WC3Message {
 
     public SlotInfo(ByteBuffer b)
     {
-        b.order(ByteOrder.LITTLE_ENDIAN);
-        b.position(6);
+        b.getShort();
 
         int countSlots = Byte.toUnsignedInt(b.get());
 

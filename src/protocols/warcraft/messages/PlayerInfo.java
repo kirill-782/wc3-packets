@@ -61,7 +61,7 @@ public class PlayerInfo implements WC3Message {
 
         int playerNameSize = this.playerName.getBytes(StandardCharsets.UTF_8).length;
 
-        if(playerNameSize > 15) {
+        if(playerNameSize > 15 || playerNameSize == 0) {
             throw new IllegalPlayerNameSizeException("playerName");
         }
 

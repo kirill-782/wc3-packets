@@ -19,20 +19,18 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class ChatToHost implements WC3Message {
 
-    ArrayList<Byte> toPlayerIDs = new ArrayList<>();
-    byte fromPlayerID;
-    ChatFlag flag = ChatFlag.MESSAGE;
-    byte byteValue;
-    String message;
-    ChatExtraFlag extraFlag = ChatExtraFlag.ALL;
+    private ArrayList<Byte> toPlayerIDs = new ArrayList<>();
+    private byte fromPlayerID;
+    private ChatFlag flag = ChatFlag.MESSAGE;
+    private byte byteValue;
+    private String message;
+    private ChatExtraFlag extraFlag = ChatExtraFlag.ALL;
 
     public ChatToHost() {
 
     }
 
     public ChatToHost(ByteBuffer b) {
-        b.position(4);
-        b.order(ByteOrder.LITTLE_ENDIAN);
 
         int toPlayerIDsSize = Byte.toUnsignedInt(b.get());
 
@@ -124,6 +122,7 @@ public class ChatToHost implements WC3Message {
             ByteBuffer b = ByteBuffer.allocate(size);
             b.order(ByteOrder.LITTLE_ENDIAN);
             b.put(Messages.HEADER);
+
             b.put(Messages.CHATTOHOST);
             b.putShort((short) size);
 

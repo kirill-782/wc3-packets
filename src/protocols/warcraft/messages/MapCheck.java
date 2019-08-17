@@ -12,11 +12,11 @@ import java.nio.ByteOrder;
 import java.nio.charset.StandardCharsets;
 
 public class MapCheck implements WC3Message {
-    String mapPath;
-    long mapSize;
-    byte[] mapInfo;
-    byte[] mapCRC;
-    byte[] mapSHA1;
+    private String mapPath;
+    private long mapSize;
+    private byte[] mapInfo;
+    private byte[] mapCRC;
+    private byte[] mapSHA1;
 
     public MapCheck()
     {

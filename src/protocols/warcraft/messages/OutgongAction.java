@@ -33,7 +33,7 @@ public class OutgongAction implements WC3Message {
     @Override
     public byte[] assemble() throws IllegalByteSizeException {
 
-        if(action.length != 4)
+        if(crc.length != 4)
             throw new IllegalByteSizeException("crc", 4);
 
         ByteBuffer b = ByteBuffer.allocate(this.action.length + 8);

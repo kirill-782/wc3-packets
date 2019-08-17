@@ -18,9 +18,6 @@ public class RejectJoin implements WC3Message {
 
     public RejectJoin(ByteBuffer b)
     {
-        b.order(ByteOrder.LITTLE_ENDIAN);
-        b.position(4);
-
         this.reason = RejectReason.getInstance(b.getInt());
     }
 

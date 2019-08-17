@@ -24,9 +24,6 @@ public class IncomingAction implements WC3Message {
 
     public IncomingAction(ByteBuffer b)
     {
-        b.order(ByteOrder.LITTLE_ENDIAN);
-        b.position(4);
-
         this.sendInterval = Short.toUnsignedInt(b.getShort());
 
         this.crc32 = new byte[2];
@@ -49,9 +46,10 @@ public class IncomingAction implements WC3Message {
     public byte[] assemble() throws WC3Exception {
         ByteBuffer b = ByteBuffer.allocate(3000);
         b.order(ByteOrder.LITTLE_ENDIAN);
+
         b.put(Messages.HEADER);
         b.put(Messages.INCOMINGACTION);
-        b.putShort((short) 2);
+        b.putShort((short) 0);
 
         b.putShort((short) this.sendInterval);
         b.putShort((short) 2);

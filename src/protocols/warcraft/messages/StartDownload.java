@@ -22,6 +22,7 @@ public class StartDownload implements WC3Message {
 
     public StartDownload(ByteBuffer b)
     {
+        b.getInt();
         this.fromPlayerID = b.get();
     }
 

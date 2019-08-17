@@ -27,8 +27,6 @@ public class SlotInfoJoin implements WC3Message {
     }
 
     public SlotInfoJoin(ByteBuffer b) {
-        b.order(ByteOrder.LITTLE_ENDIAN);
-        b.position(4);
 
         int endSlotInfo = b.position() + 2 + Short.toUnsignedInt(b.getShort());
 

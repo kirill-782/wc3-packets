@@ -2,17 +2,18 @@ package protocols.warcraft.messages;
 
 import protocols.warcraft.Messages;
 import protocols.warcraft.WC3Message;
+import protocols.warcraft.util.PlayerLeaveCode;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
 public class PlayerLeaveOther implements WC3Message {
 
-    private int leftCode;
+    private PlayerLeaveCode leftCode;
 
     public PlayerLeaveOther(ByteBuffer b) {
         b.order(ByteOrder.LITTLE_ENDIAN);
-        this.leftCode = b.getInt(4);
+        this.leftCode = PlayerLeaveCode.getInstance(b.getInt(4));
     }
 
     public PlayerLeaveOther()
@@ -29,16 +30,16 @@ public class PlayerLeaveOther implements WC3Message {
         b.put(Messages.PLAYERLEAVEOTHERS);
         b.putShort((short) 8);
 
-        b.putInt(this.leftCode);
+        b.putInt(this.leftCode.getCode( ));
 
         return b.array();
     }
 
-    public int getLeftCode() {
+    public PlayerLeaveCode getLeftCode() {
         return leftCode;
     }
 
-    public PlayerLeaveOther setLeftCode(int leftCode) {
+    public PlayerLeaveOther setLeftCode(PlayerLeaveCode leftCode) {
         this.leftCode = leftCode;
 
         return this;

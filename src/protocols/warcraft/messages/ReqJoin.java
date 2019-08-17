@@ -25,8 +25,6 @@ public class ReqJoin implements WC3Message {
     }
 
     public ReqJoin(ByteBuffer b) throws IllegalPlayerNameSizeException {
-        b.position(4);
-        b.order(ByteOrder.LITTLE_ENDIAN);
 
         this.hostCounterID = b.getInt();
         this.entryKey = b.getInt();
