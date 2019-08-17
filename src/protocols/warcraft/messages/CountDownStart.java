@@ -1,5 +1,6 @@
 package protocols.warcraft.messages;
 
+import protocols.warcraft.Messages;
 import protocols.warcraft.WC3Message;
 import protocols.warcraft.exceptions.IllegalByteSizeException;
 import protocols.warcraft.exceptions.IllegalPlayerNameSizeException;
@@ -28,8 +29,8 @@ public class CountDownStart implements WC3Message {
         ByteBuffer b = ByteBuffer.allocate(4);
         b.order(ByteOrder.LITTLE_ENDIAN);
 
-        b.put(WC3Message.HEADER);
-        b.put(WC3Message.COUNTDOWNSTART);
+        b.put(Messages.HEADER);
+        b.put(Messages.COUNTDOWNSTART);
         b.putShort((short) 4);
 
         return b.array();

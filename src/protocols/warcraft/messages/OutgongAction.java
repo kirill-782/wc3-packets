@@ -1,5 +1,6 @@
 package protocols.warcraft.messages;
 
+import protocols.warcraft.Messages;
 import protocols.warcraft.WC3Message;
 import protocols.warcraft.exceptions.IllegalByteSizeException;
 
@@ -38,8 +39,8 @@ public class OutgongAction implements WC3Message {
         ByteBuffer b = ByteBuffer.allocate(this.action.length + 8);
         b.order(ByteOrder.LITTLE_ENDIAN);
 
-        b.put(HEADER);
-        b.put(OUTGOINGACTION);
+        b.put(Messages.HEADER);
+        b.put(Messages.OUTGOINGACTION);
         b.putShort((short) (this.action.length + 8));
 
         b.put(this.crc);

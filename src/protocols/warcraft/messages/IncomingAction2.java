@@ -1,6 +1,7 @@
 package protocols.warcraft.messages;
 
 import protocols.warcraft.Action;
+import protocols.warcraft.Messages;
 import protocols.warcraft.WC3Message;
 import protocols.warcraft.exceptions.WC3Exception;
 
@@ -48,8 +49,8 @@ public class IncomingAction2 implements WC3Message {
         ByteBuffer b = ByteBuffer.allocate(3000);
         b.order(ByteOrder.LITTLE_ENDIAN);
 
-        b.put(HEADER);
-        b.put(INCOMINGACTION2);
+        b.put(Messages.HEADER);
+        b.put(Messages.INCOMINGACTION2);
         b.putShort((short) 1); //size
 
         b.putShort((short) 0);

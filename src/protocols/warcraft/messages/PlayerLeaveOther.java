@@ -1,5 +1,6 @@
 package protocols.warcraft.messages;
 
+import protocols.warcraft.Messages;
 import protocols.warcraft.WC3Message;
 
 import java.nio.ByteBuffer;
@@ -24,8 +25,8 @@ public class PlayerLeaveOther implements WC3Message {
         ByteBuffer b = ByteBuffer.allocate(8);
         b.order(ByteOrder.LITTLE_ENDIAN);
 
-        b.put(WC3Message.HEADER);
-        b.put(WC3Message.PLAYERLEAVEOTHERS);
+        b.put(Messages.HEADER);
+        b.put(Messages.PLAYERLEAVEOTHERS);
         b.putShort((short) 8);
 
         b.putInt(this.leftCode);

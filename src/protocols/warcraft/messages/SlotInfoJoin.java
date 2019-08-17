@@ -1,5 +1,6 @@
 package protocols.warcraft.messages;
 
+import protocols.warcraft.Messages;
 import protocols.warcraft.Slot;
 import protocols.warcraft.WC3Message;
 import protocols.warcraft.exceptions.IllegalByteSizeException;
@@ -71,8 +72,8 @@ public class SlotInfoJoin implements WC3Message {
         ByteBuffer b = ByteBuffer.allocate(encodedSlotInfo.length + 23);
         b.order(ByteOrder.LITTLE_ENDIAN);
 
-        b.put(WC3Message.HEADER);
-        b.put(WC3Message.SLOTINFOJOIN);
+        b.put(Messages.HEADER);
+        b.put(Messages.SLOTINFOJOIN);
         b.putShort((short) (encodedSlotInfo.length + 23));
 
         b.putShort((short) encodedSlotInfo.length);

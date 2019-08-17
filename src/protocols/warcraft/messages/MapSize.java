@@ -1,5 +1,6 @@
 package protocols.warcraft.messages;
 
+import protocols.warcraft.Messages;
 import protocols.warcraft.WC3Message;
 import protocols.warcraft.exceptions.WC3Exception;
 import protocols.warcraft.util.MapSizeFlag;
@@ -29,8 +30,8 @@ public class MapSize implements WC3Message {
 
         ByteBuffer b = ByteBuffer.allocate(13);
 
-        b.put(HEADER);
-        b.put(MAPSIZE);
+        b.put(Messages.HEADER);
+        b.put(Messages.MAPSIZE);
         b.putShort((short) 13);
 
         b.put(unknown);
@@ -38,5 +39,23 @@ public class MapSize implements WC3Message {
         b.putInt((int) this.mapSize);
 
         return b.array();
+    }
+
+    public MapSizeFlag getFlag() {
+        return flag;
+    }
+
+    public MapSize setFlag(MapSizeFlag flag) {
+        this.flag = flag;
+        return this;
+    }
+
+    public long getMapSize() {
+        return mapSize;
+    }
+
+    public MapSize setMapSize(long mapSize) {
+        this.mapSize = mapSize;
+        return this;
     }
 }

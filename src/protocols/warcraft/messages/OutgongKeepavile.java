@@ -1,5 +1,6 @@
 package protocols.warcraft.messages;
 
+import protocols.warcraft.Messages;
 import protocols.warcraft.WC3Message;
 import protocols.warcraft.exceptions.WC3Exception;
 
@@ -26,8 +27,8 @@ public class OutgongKeepavile implements WC3Message {
         ByteBuffer b = ByteBuffer.allocate(9);
         b.order(ByteOrder.LITTLE_ENDIAN);
 
-        b.put(HEADER);
-        b.put(OUTGOINGKEEPALIVE);
+        b.put(Messages.HEADER);
+        b.put(Messages.OUTGOINGKEEPALIVE);
         b.putShort((short) 9);
 
         b.put((byte) 1);

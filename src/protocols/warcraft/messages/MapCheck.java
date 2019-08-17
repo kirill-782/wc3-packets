@@ -1,5 +1,6 @@
 package protocols.warcraft.messages;
 
+import protocols.warcraft.Messages;
 import protocols.warcraft.WC3Message;
 import protocols.warcraft.exceptions.IllegalByteSizeException;
 import protocols.warcraft.exceptions.IllegalMapPathException;
@@ -63,8 +64,8 @@ public class MapCheck implements WC3Message {
 
         ByteBuffer b = ByteBuffer.allocate(33 + mapPathRaw.length);
         b.order(ByteOrder.LITTLE_ENDIAN);
-        b.put(HEADER);
-        b.put(MAPCHECK);
+        b.put(Messages.HEADER);
+        b.put(Messages.MAPCHECK);
         b.putShort((short) (33 + mapPathRaw.length));
 
         b.put(unknown);
