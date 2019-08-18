@@ -1,7 +1,9 @@
 package protocols.warcraft.messages;
 
+import protocols.warcraft.Constants;
 import protocols.warcraft.Messages;
 import protocols.warcraft.WC3Message;
+import protocols.warcraft.exceptions.IllegalPlayerIDException;
 import protocols.warcraft.exceptions.WC3Exception;
 
 import java.nio.ByteBuffer;
@@ -19,10 +21,15 @@ public class MapPartOK implements WC3Message {
 
     }
 
-    public MapPartOK(ByteBuffer b)
-    {
+    public MapPartOK(ByteBuffer b) throws IllegalPlayerIDException {
         this.fromPlayerID = b.get();
         this.toPlayerID = b.get();
+
+        if (this.toPlayerID > Constants.MAXPLAYERS || this.toPlayerID < 1)
+            throw new IllegalPlayerIDException("toPlayerID", this.toPlayerID);
+
+        if (this.fromPlayerID > Constants.MAXPLAYERS || this.fromPlayerID < 1)
+            throw new IllegalPlayerIDException("fromPlayerID", this.fromPlayerID);
 
         b.getInt();
 
@@ -30,7 +37,14 @@ public class MapPartOK implements WC3Message {
     }
 
     @Override
-    public byte[] assemble() {
+    public byte[] assemble() throws IllegalPlayerIDException {
+
+        if (this.toPlayerID > Constants.MAXPLAYERS || this.toPlayerID < 1)
+            throw new IllegalPlayerIDException("toPlayerID", this.toPlayerID);
+
+        if (this.fromPlayerID > Constants.MAXPLAYERS || this.fromPlayerID < 1)
+            throw new IllegalPlayerIDException("fromPlayerID", this.fromPlayerID);
+
         ByteBuffer b = ByteBuffer.allocate(14);
         b.order(ByteOrder.LITTLE_ENDIAN);
 
