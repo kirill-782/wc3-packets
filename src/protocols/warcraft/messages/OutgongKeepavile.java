@@ -37,4 +37,13 @@ public class OutgongKeepavile implements WC3Message {
         return b.array();
 
     }
+
+    public int getChecksum() {
+        return checksum;
+    }
+
+    public OutgongKeepavile setChecksum(int checksum) {
+        this.checksum = checksum;
+        return this;
+    }
 }

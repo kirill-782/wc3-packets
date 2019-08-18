@@ -59,4 +59,31 @@ public class MapPartOK implements WC3Message {
 
         return b.array();
     }
+
+    public byte getFromPlayerID() {
+        return fromPlayerID;
+    }
+
+    public MapPartOK setFromPlayerID(byte fromPlayerID) {
+        this.fromPlayerID = fromPlayerID;
+        return this;
+    }
+
+    public byte getToPlayerID() {
+        return toPlayerID;
+    }
+
+    public MapPartOK setToPlayerID(byte toPlayerID) {
+        this.toPlayerID = toPlayerID;
+        return this;
+    }
+
+    public long getMapSize() {
+        return mapSize;
+    }
+
+    public MapPartOK setMapSize(long mapSize) {
+        this.mapSize = mapSize;
+        return this;
+    }
 }

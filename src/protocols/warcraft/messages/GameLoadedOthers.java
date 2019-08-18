@@ -39,4 +39,13 @@ public class GameLoadedOthers implements WC3Message {
 
         return b.array();
     }
+
+    public byte getPlayerID() {
+        return playerID;
+    }
+
+    public GameLoadedOthers setPlayerID(byte playerID) {
+        this.playerID = playerID;
+        return this;
+    }
 }

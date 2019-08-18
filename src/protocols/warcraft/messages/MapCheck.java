@@ -126,4 +126,6 @@ public class MapCheck implements WC3Message {
         this.mapSHA1 = mapSHA1;
         return this;
     }
+
+
 }

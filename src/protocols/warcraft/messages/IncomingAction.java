@@ -107,4 +107,6 @@ public class IncomingAction implements WC3Message {
         this.sendInterval = sendInterval;
         return this;
     }
+
+
 }

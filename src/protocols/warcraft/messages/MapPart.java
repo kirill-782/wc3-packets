@@ -72,4 +72,49 @@ public class MapPart implements WC3Message {
 
         return b.array();
     }
+
+    public byte getToPlayerID() {
+        return toPlayerID;
+    }
+
+    public MapPart setToPlayerID(byte toPlayerID) {
+        this.toPlayerID = toPlayerID;
+        return this;
+    }
+
+    public byte getFromPlayerID() {
+        return fromPlayerID;
+    }
+
+    public MapPart setFromPlayerID(byte fromPlayerID) {
+        this.fromPlayerID = fromPlayerID;
+        return this;
+    }
+
+    public long getStartPosition() {
+        return startPosition;
+    }
+
+    public MapPart setStartPosition(long startPosition) {
+        this.startPosition = startPosition;
+        return this;
+    }
+
+    public byte[] getCrc32() {
+        return crc32;
+    }
+
+    public MapPart setCrc32(byte[] crc32) {
+        this.crc32 = crc32;
+        return this;
+    }
+
+    public byte[] getData() {
+        return data;
+    }
+
+    public MapPart setData(byte[] data) {
+        this.data = data;
+        return this;
+    }
 }

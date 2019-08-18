@@ -197,4 +197,6 @@ public class ChatToHost implements WC3Message {
         this.extraFlag = extraFlag;
         return this;
     }
+
+
 }

@@ -47,4 +47,13 @@ public class StartDownload implements WC3Message {
 
         return b.array();
     }
+
+    public byte getFromPlayerID() {
+        return fromPlayerID;
+    }
+
+    public StartDownload setFromPlayerID(byte fromPlayerID) {
+        this.fromPlayerID = fromPlayerID;
+        return this;
+    }
 }
