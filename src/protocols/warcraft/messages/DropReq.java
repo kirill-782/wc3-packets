@@ -19,7 +19,7 @@ public class DropReq implements WC3Message {
     }
 
     @Override
-    public byte[] assemble() throws WC3Exception {
+    public byte[] assemble() {
         ByteBuffer b = ByteBuffer.allocate(4);
         b.order(ByteOrder.LITTLE_ENDIAN);
 

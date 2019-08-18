@@ -43,7 +43,7 @@ public class IncomingAction implements WC3Message {
     }
 
     @Override
-    public byte[] assemble() throws WC3Exception {
+    public byte[] assemble() {
         ByteBuffer b = ByteBuffer.allocate(3000);
         b.order(ByteOrder.LITTLE_ENDIAN);
 

@@ -23,7 +23,7 @@ public class OutgongKeepavile implements WC3Message {
 
 
     @Override
-    public byte[] assemble() throws WC3Exception {
+    public byte[] assemble() {
         ByteBuffer b = ByteBuffer.allocate(9);
         b.order(ByteOrder.LITTLE_ENDIAN);
 

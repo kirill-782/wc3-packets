@@ -36,7 +36,7 @@ public class MapPart implements WC3Message {
     }
 
     @Override
-    public byte[] assemble() throws WC3Exception {
+    public byte[] assemble() {
         ByteBuffer b = ByteBuffer.allocate(data.length + 14);
         b.order(ByteOrder.LITTLE_ENDIAN);
 
