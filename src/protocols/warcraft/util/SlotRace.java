@@ -23,7 +23,7 @@ public class SlotRace {
 
     public SlotRace(byte flags)
     {
-        if( ( flags & SELECTABLE ) != SELECTABLE )
+        if( ( flags & SELECTABLE ) == SELECTABLE )
             this.selectable = true;
 
         if( ( flags & HUMAN ) != 0 )
