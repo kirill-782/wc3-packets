@@ -7,16 +7,16 @@ import protocols.warcraft.util.PlayerLeaveCode;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
-public class PlayerLeaveOther implements WC3Message {
+public class MessagePlayerLeaveOther implements WC3Message {
 
     private PlayerLeaveCode leftCode;
 
-    public PlayerLeaveOther(ByteBuffer b) {
+    public MessagePlayerLeaveOther(ByteBuffer b) {
         b.order(ByteOrder.LITTLE_ENDIAN);
         this.leftCode = PlayerLeaveCode.getInstance(b.getInt(4));
     }
 
-    public PlayerLeaveOther()
+    public MessagePlayerLeaveOther()
     {
 
     }
@@ -39,7 +39,7 @@ public class PlayerLeaveOther implements WC3Message {
         return leftCode;
     }
 
-    public PlayerLeaveOther setLeftCode(PlayerLeaveCode leftCode) {
+    public MessagePlayerLeaveOther setLeftCode(PlayerLeaveCode leftCode) {
         this.leftCode = leftCode;
 
         return this;

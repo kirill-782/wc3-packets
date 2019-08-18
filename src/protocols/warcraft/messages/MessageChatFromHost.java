@@ -15,7 +15,7 @@ import java.nio.ByteOrder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
-public class ChatFromHost implements WC3Message {
+public class MessageChatFromHost implements WC3Message {
 
     private ArrayList<Byte> toPlayerIDs = new ArrayList<>();
     private byte fromPlayerID = 0;
@@ -23,11 +23,11 @@ public class ChatFromHost implements WC3Message {
     private ChatExtraFlag flagExtra = null;
     private String message = "";
 
-    public ChatFromHost() {
+    public MessageChatFromHost() {
 
     }
 
-    public ChatFromHost(ByteBuffer b) throws WC3Exception {
+    public MessageChatFromHost(ByteBuffer b) throws WC3Exception {
 
         int toPlayerIDsSize = Byte.toUnsignedInt(b.get());
 
@@ -114,7 +114,7 @@ public class ChatFromHost implements WC3Message {
         return toPlayerIDs;
     }
 
-    public ChatFromHost setToPlayerIDs(ArrayList<Byte> toPlayerIDs) {
+    public MessageChatFromHost setToPlayerIDs(ArrayList<Byte> toPlayerIDs) {
         this.toPlayerIDs = toPlayerIDs;
         return this;
     }
@@ -123,7 +123,7 @@ public class ChatFromHost implements WC3Message {
         return fromPlayerID;
     }
 
-    public ChatFromHost setFromPlayerID(byte fromPlayerID) {
+    public MessageChatFromHost setFromPlayerID(byte fromPlayerID) {
         this.fromPlayerID = fromPlayerID;
         return this;
     }
@@ -132,7 +132,7 @@ public class ChatFromHost implements WC3Message {
         return flag;
     }
 
-    public ChatFromHost setFlag(ChatFlag flag) {
+    public MessageChatFromHost setFlag(ChatFlag flag) {
         this.flag = flag;
         return this;
     }
@@ -141,7 +141,7 @@ public class ChatFromHost implements WC3Message {
         return flagExtra;
     }
 
-    public ChatFromHost setFlagExtra(ChatExtraFlag flagExtra) {
+    public MessageChatFromHost setFlagExtra(ChatExtraFlag flagExtra) {
         this.flagExtra = flagExtra;
         return this;
     }
@@ -150,7 +150,7 @@ public class ChatFromHost implements WC3Message {
         return message;
     }
 
-    public ChatFromHost setMessage(String message) {
+    public MessageChatFromHost setMessage(String message) {
         this.message = message;
         return this;
     }

@@ -11,7 +11,7 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
 
-public class SlotInfoJoin implements WC3Message {
+public class MessageSlotInfoJoin implements WC3Message {
     private byte playerID = 0;
     private ArrayList<Slot> slots = new ArrayList<>();
     private int randomSeed = 0;
@@ -21,16 +21,16 @@ public class SlotInfoJoin implements WC3Message {
     private byte[] externalIP = null;
 
 
-    public SlotInfoJoin()
+    public MessageSlotInfoJoin()
     {
 
     }
 
-    public SlotInfoJoin(ByteBuffer b) {
+    public MessageSlotInfoJoin(ByteBuffer b) {
 
         int endSlotInfo = b.position() + 2 + Short.toUnsignedInt(b.getShort());
 
-        // Encoded SlotInfo
+        // Encoded MessageSlotInfo
 
         int countSlots = Byte.toUnsignedInt(b.get());
 
@@ -41,7 +41,7 @@ public class SlotInfoJoin implements WC3Message {
         this.layoutStyle = b.get();
         this.slotsForPlayers = b.get();
 
-        // Encoded SlotInfo end.
+        // Encoded MessageSlotInfo end.
 
         //b.position(endSlotInfo);
 
@@ -97,7 +97,7 @@ public class SlotInfoJoin implements WC3Message {
         return playerID;
     }
 
-    public SlotInfoJoin setPlayerID(byte playerID) {
+    public MessageSlotInfoJoin setPlayerID(byte playerID) {
         this.playerID = playerID;
         return this;
     }
@@ -106,7 +106,7 @@ public class SlotInfoJoin implements WC3Message {
         return slots;
     }
 
-    public SlotInfoJoin setSlots(ArrayList<Slot> slots) {
+    public MessageSlotInfoJoin setSlots(ArrayList<Slot> slots) {
         this.slots = slots;
         return this;
     }
@@ -115,7 +115,7 @@ public class SlotInfoJoin implements WC3Message {
         return randomSeed;
     }
 
-    public SlotInfoJoin setRandomSeed(int randomSeed) {
+    public MessageSlotInfoJoin setRandomSeed(int randomSeed) {
         this.randomSeed = randomSeed;
         return this;
     }
@@ -124,7 +124,7 @@ public class SlotInfoJoin implements WC3Message {
         return layoutStyle;
     }
 
-    public SlotInfoJoin setLayoutStyle(byte layoutStyle) {
+    public MessageSlotInfoJoin setLayoutStyle(byte layoutStyle) {
         this.layoutStyle = layoutStyle;
         return this;
     }
@@ -133,7 +133,7 @@ public class SlotInfoJoin implements WC3Message {
         return slotsForPlayers;
     }
 
-    public SlotInfoJoin setSlotsForPlayers(byte slotsForPlayers) {
+    public MessageSlotInfoJoin setSlotsForPlayers(byte slotsForPlayers) {
         this.slotsForPlayers = slotsForPlayers;
         return this;
     }
@@ -142,7 +142,7 @@ public class SlotInfoJoin implements WC3Message {
         return port;
     }
 
-    public SlotInfoJoin setPort(int port) {
+    public MessageSlotInfoJoin setPort(int port) {
         this.port = port;
         return this;
     }
@@ -151,7 +151,7 @@ public class SlotInfoJoin implements WC3Message {
         return externalIP;
     }
 
-    public SlotInfoJoin setExternalIP(byte[] externalIP) {
+    public MessageSlotInfoJoin setExternalIP(byte[] externalIP) {
         this.externalIP = externalIP;
         return this;
     }

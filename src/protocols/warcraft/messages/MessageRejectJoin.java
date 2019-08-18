@@ -7,16 +7,16 @@ import protocols.warcraft.util.RejectReason;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
-public class RejectJoin implements WC3Message {
+public class MessageRejectJoin implements WC3Message {
 
     private RejectReason reason = RejectReason.STARTED;
 
-    public RejectJoin()
+    public MessageRejectJoin()
     {
 
     }
 
-    public RejectJoin(ByteBuffer b)
+    public MessageRejectJoin(ByteBuffer b)
     {
         this.reason = RejectReason.getInstance(b.getInt());
     }
@@ -39,7 +39,7 @@ public class RejectJoin implements WC3Message {
         return reason;
     }
 
-    public RejectJoin setReason(RejectReason reason) {
+    public MessageRejectJoin setReason(RejectReason reason) {
         this.reason = reason;
         return this;
     }

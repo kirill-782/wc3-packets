@@ -9,17 +9,17 @@ import protocols.warcraft.exceptions.WC3Exception;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
-public class StopLag implements WC3Message {
+public class MessageStopLag implements WC3Message {
 
     private byte playerID;
     private long lagTimeMS;
 
-    private StopLag( )
+    private MessageStopLag( )
     {
 
     }
 
-    private StopLag(ByteBuffer b) throws IllegalPlayerIDException {
+    private MessageStopLag(ByteBuffer b) throws IllegalPlayerIDException {
         this.playerID = b.get();
 
         if (this.playerID > Constants.MAXPLAYERS || this.playerID < 1)
@@ -51,7 +51,7 @@ public class StopLag implements WC3Message {
         return playerID;
     }
 
-    public StopLag setPlayerID(byte playerID) {
+    public MessageStopLag setPlayerID(byte playerID) {
         this.playerID = playerID;
         return this;
     }
@@ -60,7 +60,7 @@ public class StopLag implements WC3Message {
         return lagTimeMS;
     }
 
-    public StopLag setLagTimeMS(long lagTimeMS) {
+    public MessageStopLag setLagTimeMS(long lagTimeMS) {
         this.lagTimeMS = lagTimeMS;
         return this;
     }

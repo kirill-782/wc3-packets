@@ -11,14 +11,14 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.StandardCharsets;
 
-public class CountDownEnd implements WC3Message {
+public class MessageCountDownEnd implements WC3Message {
 
-    public CountDownEnd()
+    public MessageCountDownEnd()
     {
 
     }
 
-    public CountDownEnd(ByteBuffer b)
+    public MessageCountDownEnd(ByteBuffer b)
     {
 
     }

@@ -12,7 +12,7 @@ import java.nio.ByteOrder;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
-public class PlayerInfo implements WC3Message {
+public class MessagePlayerInfo implements WC3Message {
     private int playerPeerKey = 0;
     private byte playerID = 0;
     private String playerName = "Symmetra";
@@ -21,7 +21,7 @@ public class PlayerInfo implements WC3Message {
     private int intrenalPort = 0;
     private byte[] internalIP = null;
 
-    public PlayerInfo(ByteBuffer b) throws IllegalPlayerNameSizeException {
+    public MessagePlayerInfo(ByteBuffer b) throws IllegalPlayerNameSizeException {
         b.order(ByteOrder.LITTLE_ENDIAN);
         b.position(4);
 
@@ -51,7 +51,7 @@ public class PlayerInfo implements WC3Message {
 
     }
 
-    public PlayerInfo()
+    public MessagePlayerInfo()
     {
 
     }
@@ -116,7 +116,7 @@ public class PlayerInfo implements WC3Message {
         return playerPeerKey;
     }
 
-    public PlayerInfo setPlayerPeerKey(int playerPeerKey) {
+    public MessagePlayerInfo setPlayerPeerKey(int playerPeerKey) {
         this.playerPeerKey = playerPeerKey;
         return this;
     }
@@ -125,7 +125,7 @@ public class PlayerInfo implements WC3Message {
         return playerID;
     }
 
-    public PlayerInfo setPlayerID(byte playerID) {
+    public MessagePlayerInfo setPlayerID(byte playerID) {
         this.playerID = playerID;
         return this;
     }
@@ -134,7 +134,7 @@ public class PlayerInfo implements WC3Message {
         return playerName;
     }
 
-    public PlayerInfo setPlayerName(String playerName) {
+    public MessagePlayerInfo setPlayerName(String playerName) {
         this.playerName = playerName;
         return this;
     }
@@ -143,7 +143,7 @@ public class PlayerInfo implements WC3Message {
         return externalPort;
     }
 
-    public PlayerInfo setExternalPort(int externalPort) {
+    public MessagePlayerInfo setExternalPort(int externalPort) {
         this.externalPort = externalPort;
         return this;
     }
@@ -152,7 +152,7 @@ public class PlayerInfo implements WC3Message {
         return extrenalIP;
     }
 
-    public PlayerInfo setExtrenalIP(byte[] extrenalIP) {
+    public MessagePlayerInfo setExtrenalIP(byte[] extrenalIP) {
         this.extrenalIP = extrenalIP;
         return this;
     }
@@ -161,7 +161,7 @@ public class PlayerInfo implements WC3Message {
         return intrenalPort;
     }
 
-    public PlayerInfo setIntrenalPort(int intrenalPort) {
+    public MessagePlayerInfo setIntrenalPort(int intrenalPort) {
         this.intrenalPort = intrenalPort;
         return this;
     }
@@ -170,7 +170,7 @@ public class PlayerInfo implements WC3Message {
         return internalIP;
     }
 
-    public PlayerInfo setInternalIP(byte[] internalIP) {
+    public MessagePlayerInfo setInternalIP(byte[] internalIP) {
         this.internalIP = internalIP;
         return this;
     }

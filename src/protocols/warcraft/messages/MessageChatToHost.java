@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 
-public class ChatToHost implements WC3Message {
+public class MessageChatToHost implements WC3Message {
 
     private ArrayList<Byte> toPlayerIDs = new ArrayList<>();
     private byte fromPlayerID;
@@ -26,11 +26,11 @@ public class ChatToHost implements WC3Message {
     private String message;
     private ChatExtraFlag extraFlag = ChatExtraFlag.ALL;
 
-    public ChatToHost() {
+    public MessageChatToHost() {
 
     }
 
-    public ChatToHost(ByteBuffer b) {
+    public MessageChatToHost(ByteBuffer b) {
 
         int toPlayerIDsSize = Byte.toUnsignedInt(b.get());
 
@@ -148,7 +148,7 @@ public class ChatToHost implements WC3Message {
         return toPlayerIDs;
     }
 
-    public ChatToHost setToPlayerIDs(ArrayList<Byte> toPlayerIDs) {
+    public MessageChatToHost setToPlayerIDs(ArrayList<Byte> toPlayerIDs) {
         this.toPlayerIDs = toPlayerIDs;
         return this;
     }
@@ -157,7 +157,7 @@ public class ChatToHost implements WC3Message {
         return fromPlayerID;
     }
 
-    public ChatToHost setFromPlayerID(byte fromPlayerID) {
+    public MessageChatToHost setFromPlayerID(byte fromPlayerID) {
         this.fromPlayerID = fromPlayerID;
         return this;
     }
@@ -166,7 +166,7 @@ public class ChatToHost implements WC3Message {
         return flag;
     }
 
-    public ChatToHost setFlag(ChatFlag flag) {
+    public MessageChatToHost setFlag(ChatFlag flag) {
         this.flag = flag;
         return this;
     }
@@ -175,7 +175,7 @@ public class ChatToHost implements WC3Message {
         return byteValue;
     }
 
-    public ChatToHost setByteValue(byte byteValue) {
+    public MessageChatToHost setByteValue(byte byteValue) {
         this.byteValue = byteValue;
         return this;
     }
@@ -184,7 +184,7 @@ public class ChatToHost implements WC3Message {
         return message;
     }
 
-    public ChatToHost setMessage(String message) {
+    public MessageChatToHost setMessage(String message) {
         this.message = message;
         return this;
     }
@@ -193,7 +193,7 @@ public class ChatToHost implements WC3Message {
         return extraFlag;
     }
 
-    public ChatToHost setExtraFlag(ChatExtraFlag extraFlag) {
+    public MessageChatToHost setExtraFlag(ChatExtraFlag extraFlag) {
         this.extraFlag = extraFlag;
         return this;
     }

@@ -3,26 +3,21 @@ package protocols.warcraft.messages;
 import protocols.warcraft.Constants;
 import protocols.warcraft.Messages;
 import protocols.warcraft.WC3Message;
-import protocols.warcraft.exceptions.IllegalByteSizeException;
 import protocols.warcraft.exceptions.IllegalPlayerIDException;
-import protocols.warcraft.exceptions.IllegalPlayerNameSizeException;
-import protocols.warcraft.exceptions.WC3Exception;
-import protocols.warcraft.util.Util;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.nio.charset.StandardCharsets;
 
-public class StartDownload implements WC3Message {
+public class MessageStartDownload implements WC3Message {
 
     private byte fromPlayerID = 0;
 
-    public StartDownload()
+    public MessageStartDownload()
     {
 
     }
 
-    public StartDownload(ByteBuffer b) throws IllegalPlayerIDException {
+    public MessageStartDownload(ByteBuffer b) throws IllegalPlayerIDException {
         b.getInt();
         this.fromPlayerID = b.get();
 
@@ -52,7 +47,7 @@ public class StartDownload implements WC3Message {
         return fromPlayerID;
     }
 
-    public StartDownload setFromPlayerID(byte fromPlayerID) {
+    public MessageStartDownload setFromPlayerID(byte fromPlayerID) {
         this.fromPlayerID = fromPlayerID;
         return this;
     }

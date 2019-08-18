@@ -6,15 +6,15 @@ import protocols.warcraft.WC3Message;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
-public class PongToHost implements WC3Message {
-    private int pongValue;
+public class MessagePingFromHost implements WC3Message {
 
-    public PongToHost(ByteBuffer b) {
+    private int pingValue;
 
-        this.pongValue = b.getInt(4);
+    public MessagePingFromHost(ByteBuffer b) {
+        this.pingValue = b.getInt(4);
     }
 
-    public PongToHost()
+    public MessagePingFromHost()
     {
 
     }
@@ -25,20 +25,21 @@ public class PongToHost implements WC3Message {
         b.order(ByteOrder.LITTLE_ENDIAN);
 
         b.put(Messages.HEADER);
-        b.put(Messages.PONGTOHOST);
+        b.put(Messages.PINGFROMHOST);
         b.putShort((short) 8);
 
-        b.putInt(this.pongValue);
+        b.putInt(this.pingValue);
 
         return b.array();
     }
 
-    public int getPongValue() {
-        return pongValue;
+    public int getPingValue() {
+        return pingValue;
     }
 
-    public PongToHost setPongValue(int pongValue) {
-        this.pongValue = pongValue;
+    public MessagePingFromHost setPingValue(int pingValue) {
+        this.pingValue = pingValue;
+
         return this;
     }
 }

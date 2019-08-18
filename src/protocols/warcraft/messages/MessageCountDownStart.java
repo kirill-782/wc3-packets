@@ -11,14 +11,14 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.StandardCharsets;
 
-public class GameLoadedSelf implements WC3Message {
+public class MessageCountDownStart implements WC3Message {
 
-    public GameLoadedSelf()
+    public MessageCountDownStart()
     {
 
     }
 
-    public GameLoadedSelf(ByteBuffer b)
+    public MessageCountDownStart(ByteBuffer b)
     {
 
     }
@@ -30,7 +30,8 @@ public class GameLoadedSelf implements WC3Message {
         b.order(ByteOrder.LITTLE_ENDIAN);
 
         b.put(Messages.HEADER);
-        b.put(Messages.GAMELOADEDSELF);
+        b.put(Messages.COUNTDOWNSTART);
+        b.putShort((short) 4);
 
         return b.array();
     }

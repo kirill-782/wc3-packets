@@ -10,14 +10,14 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
 
-public class StartLag implements WC3Message {
+public class MessageStartLag implements WC3Message {
     private ArrayList<Byte> laggers = new ArrayList<>();
 
-    public StartLag() {
+    public MessageStartLag() {
 
     }
 
-    public StartLag(ByteBuffer b) throws IllegalPlayerIDException {
+    public MessageStartLag(ByteBuffer b) throws IllegalPlayerIDException {
         int numLaggers = Byte.toUnsignedInt(b.get());
 
         for (int i = 0; i < numLaggers; ++i)
@@ -59,7 +59,7 @@ public class StartLag implements WC3Message {
         return laggers;
     }
 
-    public StartLag setLaggers(ArrayList<Byte> laggers) {
+    public MessageStartLag setLaggers(ArrayList<Byte> laggers) {
         this.laggers = laggers;
         return this;
     }

@@ -2,21 +2,20 @@ package protocols.warcraft.messages;
 
 import protocols.warcraft.Messages;
 import protocols.warcraft.WC3Message;
-import protocols.warcraft.exceptions.WC3Exception;
 import protocols.warcraft.util.PlayerLeaveCode;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
-public class LeaveGame implements WC3Message {
+public class MessageLeaveGame implements WC3Message {
     private PlayerLeaveCode reason = PlayerLeaveCode.LOBBY;
 
-    public LeaveGame()
+    public MessageLeaveGame()
     {
 
     }
 
-    public LeaveGame(ByteBuffer b)
+    public MessageLeaveGame(ByteBuffer b)
     {
         this.reason = PlayerLeaveCode.getInstance(b.getInt());
     }
@@ -40,7 +39,7 @@ public class LeaveGame implements WC3Message {
         return reason;
     }
 
-    public LeaveGame setReason(PlayerLeaveCode reason) {
+    public MessageLeaveGame setReason(PlayerLeaveCode reason) {
         this.reason = reason;
         return this;
     }

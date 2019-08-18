@@ -2,20 +2,19 @@ package protocols.warcraft.messages;
 
 import protocols.warcraft.Messages;
 import protocols.warcraft.WC3Message;
-import protocols.warcraft.exceptions.WC3Exception;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
-public class OutgongKeepavile implements WC3Message {
+public class MessageOutgoingKeepAlive implements WC3Message {
     private int checksum;
 
-    public OutgongKeepavile(  )
+    public MessageOutgoingKeepAlive(  )
     {
 
     }
 
-    public OutgongKeepavile(ByteBuffer b)
+    public MessageOutgoingKeepAlive(ByteBuffer b)
     {
         b.get();
         this.checksum = b.getInt();
@@ -42,7 +41,7 @@ public class OutgongKeepavile implements WC3Message {
         return checksum;
     }
 
-    public OutgongKeepavile setChecksum(int checksum) {
+    public MessageOutgoingKeepAlive setChecksum(int checksum) {
         this.checksum = checksum;
         return this;
     }

@@ -2,25 +2,20 @@ package protocols.warcraft.messages;
 
 import protocols.warcraft.Messages;
 import protocols.warcraft.WC3Message;
-import protocols.warcraft.exceptions.IllegalByteSizeException;
-import protocols.warcraft.exceptions.IllegalPlayerNameSizeException;
-import protocols.warcraft.exceptions.WC3Exception;
-import protocols.warcraft.util.Util;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.nio.charset.StandardCharsets;
 
-public class GameLoadedOthers implements WC3Message {
+public class MessageGameLoadedOthers implements WC3Message {
 
     private byte playerID = 0;
 
-    public GameLoadedOthers()
+    public MessageGameLoadedOthers()
     {
 
     }
 
-    public GameLoadedOthers(ByteBuffer b)
+    public MessageGameLoadedOthers(ByteBuffer b)
     {
         this.playerID = b.get();
     }
@@ -44,7 +39,7 @@ public class GameLoadedOthers implements WC3Message {
         return playerID;
     }
 
-    public GameLoadedOthers setPlayerID(byte playerID) {
+    public MessageGameLoadedOthers setPlayerID(byte playerID) {
         this.playerID = playerID;
         return this;
     }

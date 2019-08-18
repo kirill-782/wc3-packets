@@ -4,13 +4,12 @@ import protocols.warcraft.Constants;
 import protocols.warcraft.Messages;
 import protocols.warcraft.WC3Message;
 import protocols.warcraft.exceptions.IllegalPlayerIDException;
-import protocols.warcraft.exceptions.WC3Exception;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.zip.CRC32;
 
-public class MapPart implements WC3Message {
+public class MessageMapPart implements WC3Message {
 
     private byte toPlayerID;
     private byte fromPlayerID;
@@ -18,12 +17,12 @@ public class MapPart implements WC3Message {
     private byte[] crc32;
     private byte[] data;
 
-    public MapPart( )
+    public MessageMapPart( )
     {
 
     }
 
-    public MapPart(ByteBuffer b) throws IllegalPlayerIDException {
+    public MessageMapPart(ByteBuffer b) throws IllegalPlayerIDException {
         this.toPlayerID = b.get();
         this.fromPlayerID = b.get();
 
@@ -77,7 +76,7 @@ public class MapPart implements WC3Message {
         return toPlayerID;
     }
 
-    public MapPart setToPlayerID(byte toPlayerID) {
+    public MessageMapPart setToPlayerID(byte toPlayerID) {
         this.toPlayerID = toPlayerID;
         return this;
     }
@@ -86,7 +85,7 @@ public class MapPart implements WC3Message {
         return fromPlayerID;
     }
 
-    public MapPart setFromPlayerID(byte fromPlayerID) {
+    public MessageMapPart setFromPlayerID(byte fromPlayerID) {
         this.fromPlayerID = fromPlayerID;
         return this;
     }
@@ -95,7 +94,7 @@ public class MapPart implements WC3Message {
         return startPosition;
     }
 
-    public MapPart setStartPosition(long startPosition) {
+    public MessageMapPart setStartPosition(long startPosition) {
         this.startPosition = startPosition;
         return this;
     }
@@ -104,7 +103,7 @@ public class MapPart implements WC3Message {
         return crc32;
     }
 
-    public MapPart setCrc32(byte[] crc32) {
+    public MessageMapPart setCrc32(byte[] crc32) {
         this.crc32 = crc32;
         return this;
     }
@@ -113,7 +112,7 @@ public class MapPart implements WC3Message {
         return data;
     }
 
-    public MapPart setData(byte[] data) {
+    public MessageMapPart setData(byte[] data) {
         this.data = data;
         return this;
     }

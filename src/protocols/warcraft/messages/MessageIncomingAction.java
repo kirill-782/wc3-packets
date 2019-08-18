@@ -3,26 +3,25 @@ package protocols.warcraft.messages;
 import protocols.warcraft.Action;
 import protocols.warcraft.Messages;
 import protocols.warcraft.WC3Message;
-import protocols.warcraft.exceptions.WC3Exception;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
 import java.util.zip.CRC32;
 
-public class IncomingAction implements WC3Message {
+public class MessageIncomingAction implements WC3Message {
 
     private ArrayList<Action> actions = new ArrayList<>();
     private byte[] crc32 = null;
     private int sendInterval = 0;
 
 
-    public IncomingAction( )
+    public MessageIncomingAction( )
     {
 
     }
 
-    public IncomingAction(ByteBuffer b)
+    public MessageIncomingAction(ByteBuffer b)
     {
         this.sendInterval = Short.toUnsignedInt(b.getShort());
 
@@ -85,7 +84,7 @@ public class IncomingAction implements WC3Message {
         return actions;
     }
 
-    public IncomingAction setActions(ArrayList<Action> actions) {
+    public MessageIncomingAction setActions(ArrayList<Action> actions) {
         this.actions = actions;
         return this;
     }
@@ -94,7 +93,7 @@ public class IncomingAction implements WC3Message {
         return crc32;
     }
 
-    public IncomingAction setCrc32(byte[] crc32) {
+    public MessageIncomingAction setCrc32(byte[] crc32) {
         this.crc32 = crc32;
         return this;
     }
@@ -103,7 +102,7 @@ public class IncomingAction implements WC3Message {
         return sendInterval;
     }
 
-    public IncomingAction setSendInterval(int sendInterval) {
+    public MessageIncomingAction setSendInterval(int sendInterval) {
         this.sendInterval = sendInterval;
         return this;
     }

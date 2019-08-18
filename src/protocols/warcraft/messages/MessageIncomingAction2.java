@@ -3,24 +3,23 @@ package protocols.warcraft.messages;
 import protocols.warcraft.Action;
 import protocols.warcraft.Messages;
 import protocols.warcraft.WC3Message;
-import protocols.warcraft.exceptions.WC3Exception;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
 import java.util.zip.CRC32;
 
-public class IncomingAction2 implements WC3Message {
+public class MessageIncomingAction2 implements WC3Message {
 
     private ArrayList<Action> actions = new ArrayList<>();
     private byte[] crc32 = null;
 
 
-    public IncomingAction2() {
+    public MessageIncomingAction2() {
 
     }
 
-    public IncomingAction2(ByteBuffer b) {
+    public MessageIncomingAction2(ByteBuffer b) {
         b.getShort();
 
         this.crc32 = new byte[2];
@@ -81,7 +80,7 @@ public class IncomingAction2 implements WC3Message {
         return actions;
     }
 
-    public IncomingAction2 setActions(ArrayList<Action> actions) {
+    public MessageIncomingAction2 setActions(ArrayList<Action> actions) {
         this.actions = actions;
         return this;
     }
@@ -90,7 +89,7 @@ public class IncomingAction2 implements WC3Message {
         return crc32;
     }
 
-    public IncomingAction2 setCrc32(byte[] crc32) {
+    public MessageIncomingAction2 setCrc32(byte[] crc32) {
         this.crc32 = crc32;
         return this;
     }

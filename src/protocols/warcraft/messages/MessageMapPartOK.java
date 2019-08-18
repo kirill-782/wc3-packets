@@ -4,24 +4,23 @@ import protocols.warcraft.Constants;
 import protocols.warcraft.Messages;
 import protocols.warcraft.WC3Message;
 import protocols.warcraft.exceptions.IllegalPlayerIDException;
-import protocols.warcraft.exceptions.WC3Exception;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
-public class MapPartOK implements WC3Message {
+public class MessageMapPartOK implements WC3Message {
 
     private byte fromPlayerID;
     private byte toPlayerID;
 
     private long mapSize;
 
-    public MapPartOK()
+    public MessageMapPartOK()
     {
 
     }
 
-    public MapPartOK(ByteBuffer b) throws IllegalPlayerIDException {
+    public MessageMapPartOK(ByteBuffer b) throws IllegalPlayerIDException {
         this.fromPlayerID = b.get();
         this.toPlayerID = b.get();
 
@@ -64,7 +63,7 @@ public class MapPartOK implements WC3Message {
         return fromPlayerID;
     }
 
-    public MapPartOK setFromPlayerID(byte fromPlayerID) {
+    public MessageMapPartOK setFromPlayerID(byte fromPlayerID) {
         this.fromPlayerID = fromPlayerID;
         return this;
     }
@@ -73,7 +72,7 @@ public class MapPartOK implements WC3Message {
         return toPlayerID;
     }
 
-    public MapPartOK setToPlayerID(byte toPlayerID) {
+    public MessageMapPartOK setToPlayerID(byte toPlayerID) {
         this.toPlayerID = toPlayerID;
         return this;
     }
@@ -82,7 +81,7 @@ public class MapPartOK implements WC3Message {
         return mapSize;
     }
 
-    public MapPartOK setMapSize(long mapSize) {
+    public MessageMapPartOK setMapSize(long mapSize) {
         this.mapSize = mapSize;
         return this;
     }

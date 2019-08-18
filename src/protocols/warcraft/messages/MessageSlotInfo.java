@@ -3,26 +3,25 @@ package protocols.warcraft.messages;
 import protocols.warcraft.Messages;
 import protocols.warcraft.Slot;
 import protocols.warcraft.WC3Message;
-import protocols.warcraft.exceptions.WC3Exception;
 import protocols.warcraft.util.Util;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
 
-public class SlotInfo implements WC3Message {
+public class MessageSlotInfo implements WC3Message {
 
     private ArrayList<Slot> slots = new ArrayList<>();
     private int randomSeed = 0;
     private byte layoutStyle = 0;
     private byte slotsForPlayers = 0;
 
-    public SlotInfo( )
+    public MessageSlotInfo( )
     {
 
     }
 
-    public SlotInfo(ByteBuffer b)
+    public MessageSlotInfo(ByteBuffer b)
     {
         b.getShort();
 
@@ -57,7 +56,7 @@ public class SlotInfo implements WC3Message {
         return slots;
     }
 
-    public SlotInfo setSlots(ArrayList<Slot> slots) {
+    public MessageSlotInfo setSlots(ArrayList<Slot> slots) {
         this.slots = slots;
         return this;
     }
@@ -66,7 +65,7 @@ public class SlotInfo implements WC3Message {
         return randomSeed;
     }
 
-    public SlotInfo setRandomSeed(int randomSeed) {
+    public MessageSlotInfo setRandomSeed(int randomSeed) {
         this.randomSeed = randomSeed;
         return this;
     }
@@ -75,7 +74,7 @@ public class SlotInfo implements WC3Message {
         return layoutStyle;
     }
 
-    public SlotInfo setLayoutStyle(byte layoutStyle) {
+    public MessageSlotInfo setLayoutStyle(byte layoutStyle) {
         this.layoutStyle = layoutStyle;
         return this;
     }
@@ -84,7 +83,7 @@ public class SlotInfo implements WC3Message {
         return slotsForPlayers;
     }
 
-    public SlotInfo setSlotsForPlayers(byte slotsForPlayers) {
+    public MessageSlotInfo setSlotsForPlayers(byte slotsForPlayers) {
         this.slotsForPlayers = slotsForPlayers;
         return this;
     }

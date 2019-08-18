@@ -8,17 +8,17 @@ import protocols.warcraft.exceptions.IllegalByteSizeException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
-public class OutgongAction implements WC3Message {
+public class MessageOutgongAction implements WC3Message {
 
     private byte[] crc = null;
     private byte[] action = null;
 
-    public OutgongAction()
+    public MessageOutgongAction()
     {
 
     }
 
-    public OutgongAction(ByteBuffer b)
+    public MessageOutgongAction(ByteBuffer b)
     {
         b.order(ByteOrder.LITTLE_ENDIAN);
         b.position(4);
@@ -53,7 +53,7 @@ public class OutgongAction implements WC3Message {
         return crc;
     }
 
-    public OutgongAction setCrc(byte[] crc) {
+    public MessageOutgongAction setCrc(byte[] crc) {
         this.crc = crc;
         return this;
     }
@@ -62,7 +62,7 @@ public class OutgongAction implements WC3Message {
         return action;
     }
 
-    public OutgongAction setAction(byte[] action) {
+    public MessageOutgongAction setAction(byte[] action) {
         this.action = action;
         return this;
     }

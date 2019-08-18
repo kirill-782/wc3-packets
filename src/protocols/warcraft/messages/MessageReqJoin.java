@@ -11,7 +11,7 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.StandardCharsets;
 
-public class ReqJoin implements WC3Message {
+public class MessageReqJoin implements WC3Message {
 
     private int hostCounterID = 0;
     private int entryKey = 0;
@@ -20,11 +20,11 @@ public class ReqJoin implements WC3Message {
     private String name = "Symmetra";
     private byte[] internalIP = null;
 
-    public ReqJoin() {
+    public MessageReqJoin() {
 
     }
 
-    public ReqJoin(ByteBuffer b) throws IllegalPlayerNameSizeException {
+    public MessageReqJoin(ByteBuffer b) throws IllegalPlayerNameSizeException {
 
         this.hostCounterID = b.getInt();
         this.entryKey = b.getInt();
@@ -85,7 +85,7 @@ public class ReqJoin implements WC3Message {
         return hostCounterID;
     }
 
-    public ReqJoin setHostCounterID(int hostCounterID) {
+    public MessageReqJoin setHostCounterID(int hostCounterID) {
         this.hostCounterID = hostCounterID;
         return this;
     }
@@ -94,7 +94,7 @@ public class ReqJoin implements WC3Message {
         return entryKey;
     }
 
-    public ReqJoin setEntryKey(int entryKey) {
+    public MessageReqJoin setEntryKey(int entryKey) {
         this.entryKey = entryKey;
         return this;
     }
@@ -103,7 +103,7 @@ public class ReqJoin implements WC3Message {
         return listenPort;
     }
 
-    public ReqJoin setListenPort(int listenPort) {
+    public MessageReqJoin setListenPort(int listenPort) {
         this.listenPort = listenPort;
         return this;
     }
@@ -112,7 +112,7 @@ public class ReqJoin implements WC3Message {
         return peerKey;
     }
 
-    public ReqJoin setPeerKey(int peerKey) {
+    public MessageReqJoin setPeerKey(int peerKey) {
         this.peerKey = peerKey;
         return this;
     }
@@ -121,7 +121,7 @@ public class ReqJoin implements WC3Message {
         return name;
     }
 
-    public ReqJoin setName(String name) {
+    public MessageReqJoin setName(String name) {
         this.name = name;
         return this;
     }
@@ -130,7 +130,7 @@ public class ReqJoin implements WC3Message {
         return internalIP;
     }
 
-    public ReqJoin setInternalIP(byte[] internalIP) {
+    public MessageReqJoin setInternalIP(byte[] internalIP) {
         this.internalIP = internalIP;
         return this;
     }

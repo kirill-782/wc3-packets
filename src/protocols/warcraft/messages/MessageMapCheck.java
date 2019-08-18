@@ -11,19 +11,19 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.StandardCharsets;
 
-public class MapCheck implements WC3Message {
+public class MessageMapCheck implements WC3Message {
     private String mapPath;
     private long mapSize;
     private byte[] mapInfo;
     private byte[] mapCRC;
     private byte[] mapSHA1;
 
-    public MapCheck()
+    public MessageMapCheck()
     {
 
     }
 
-    public MapCheck(ByteBuffer b) throws IllegalMapPathException {
+    public MessageMapCheck(ByteBuffer b) throws IllegalMapPathException {
         byte[] mapPathRaw = Util.getNullTremilaned(b);
 
         if( mapPathRaw.length == 0)
@@ -86,7 +86,7 @@ public class MapCheck implements WC3Message {
         return mapPath;
     }
 
-    public MapCheck setMapPath(String mapPath) {
+    public MessageMapCheck setMapPath(String mapPath) {
         this.mapPath = mapPath;
         return this;
     }
@@ -95,7 +95,7 @@ public class MapCheck implements WC3Message {
         return mapSize;
     }
 
-    public MapCheck setMapSize(long mapSize) {
+    public MessageMapCheck setMapSize(long mapSize) {
         this.mapSize = mapSize;
         return this;
     }
@@ -104,7 +104,7 @@ public class MapCheck implements WC3Message {
         return mapInfo;
     }
 
-    public MapCheck setMapInfo(byte[] mapInfo) {
+    public MessageMapCheck setMapInfo(byte[] mapInfo) {
         this.mapInfo = mapInfo;
         return this;
     }
@@ -113,7 +113,7 @@ public class MapCheck implements WC3Message {
         return mapCRC;
     }
 
-    public MapCheck setMapCRC(byte[] mapCRC) {
+    public MessageMapCheck setMapCRC(byte[] mapCRC) {
         this.mapCRC = mapCRC;
         return this;
     }
@@ -122,7 +122,7 @@ public class MapCheck implements WC3Message {
         return mapSHA1;
     }
 
-    public MapCheck setMapSHA1(byte[] mapSHA1) {
+    public MessageMapCheck setMapSHA1(byte[] mapSHA1) {
         this.mapSHA1 = mapSHA1;
         return this;
     }
