@@ -1,6 +1,6 @@
 package protocols.warcraft.messages;
 
-import protocols.warcraft.Messages;
+import protocols.warcraft.WC3MessageConstant;
 import protocols.warcraft.WC3Message;
 
 import java.nio.ByteBuffer;
@@ -24,8 +24,8 @@ public class MessagePingFromHost implements WC3Message {
         ByteBuffer b = ByteBuffer.allocate(8);
         b.order(ByteOrder.LITTLE_ENDIAN);
 
-        b.put(Messages.HEADER);
-        b.put(Messages.PINGFROMHOST);
+        b.put(WC3MessageConstant.HEADER);
+        b.put(WC3MessageConstant.PINGFROMHOST);
         b.putShort((short) 8);
 
         b.putInt(this.pingValue);

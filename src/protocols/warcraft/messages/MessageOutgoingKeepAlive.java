@@ -1,6 +1,6 @@
 package protocols.warcraft.messages;
 
-import protocols.warcraft.Messages;
+import protocols.warcraft.WC3MessageConstant;
 import protocols.warcraft.WC3Message;
 
 import java.nio.ByteBuffer;
@@ -26,8 +26,8 @@ public class MessageOutgoingKeepAlive implements WC3Message {
         ByteBuffer b = ByteBuffer.allocate(9);
         b.order(ByteOrder.LITTLE_ENDIAN);
 
-        b.put(Messages.HEADER);
-        b.put(Messages.OUTGOINGKEEPALIVE);
+        b.put(WC3MessageConstant.HEADER);
+        b.put(WC3MessageConstant.OUTGOINGKEEPALIVE);
         b.putShort((short) 9);
 
         b.put((byte) 1);

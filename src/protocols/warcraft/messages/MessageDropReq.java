@@ -1,8 +1,7 @@
 package protocols.warcraft.messages;
 
-import protocols.warcraft.Messages;
+import protocols.warcraft.WC3MessageConstant;
 import protocols.warcraft.WC3Message;
-import protocols.warcraft.exceptions.WC3Exception;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -23,8 +22,8 @@ public class MessageDropReq implements WC3Message {
         ByteBuffer b = ByteBuffer.allocate(4);
         b.order(ByteOrder.LITTLE_ENDIAN);
 
-        b.put(Messages.HEADER);
-        b.put(Messages.DROPREQ);
+        b.put(WC3MessageConstant.HEADER);
+        b.put(WC3MessageConstant.DROPREQ);
 
         b.putShort((short) 4);
 

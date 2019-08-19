@@ -1,6 +1,6 @@
 package protocols.warcraft.messages;
 
-import protocols.warcraft.Messages;
+import protocols.warcraft.WC3MessageConstant;
 import protocols.warcraft.WC3Message;
 import protocols.warcraft.exceptions.IllegalByteSizeException;
 import protocols.warcraft.exceptions.IllegalPlayerNameSizeException;
@@ -55,8 +55,8 @@ public class MessageReqJoin implements WC3Message {
 
         ByteBuffer b = ByteBuffer.allocate( nameRaw.length + 30);
         b.order(ByteOrder.LITTLE_ENDIAN);
-        b.put(Messages.HEADER);
-        b.put(Messages.REQJOIN);
+        b.put(WC3MessageConstant.HEADER);
+        b.put(WC3MessageConstant.REQJOIN);
         b.putShort((short) (nameRaw.length + 30));
         b.putInt(this.hostCounterID);
         b.putInt(this.entryKey);

@@ -1,7 +1,7 @@
 package protocols.warcraft.messages;
 
 import protocols.warcraft.Action;
-import protocols.warcraft.Messages;
+import protocols.warcraft.WC3MessageConstant;
 import protocols.warcraft.WC3Message;
 
 import java.nio.ByteBuffer;
@@ -42,8 +42,8 @@ public class MessageIncomingAction2 implements WC3Message {
         ByteBuffer b = ByteBuffer.allocate(3000);
         b.order(ByteOrder.LITTLE_ENDIAN);
 
-        b.put(Messages.HEADER);
-        b.put(Messages.INCOMINGACTION2);
+        b.put(WC3MessageConstant.HEADER);
+        b.put(WC3MessageConstant.INCOMINGACTION2);
         b.putShort((short) 0); //size
 
         b.putShort((short) 0);

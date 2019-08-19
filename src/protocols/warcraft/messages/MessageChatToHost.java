@@ -1,7 +1,7 @@
 package protocols.warcraft.messages;
 
 import protocols.warcraft.Constants;
-import protocols.warcraft.Messages;
+import protocols.warcraft.WC3MessageConstant;
 import protocols.warcraft.WC3Message;
 import protocols.warcraft.exceptions.IllegalMessageSizeException;
 import protocols.warcraft.exceptions.IllegalPlayerIDException;
@@ -90,8 +90,8 @@ public class MessageChatToHost implements WC3Message {
             ByteBuffer b = ByteBuffer.allocate(size);
             b.order(ByteOrder.LITTLE_ENDIAN);
 
-            b.put(Messages.HEADER);
-            b.put(Messages.CHATTOHOST);
+            b.put(WC3MessageConstant.HEADER);
+            b.put(WC3MessageConstant.CHATTOHOST);
             b.putShort((short) size);
 
             b.put((byte) toPlayerIDs.size());
@@ -121,9 +121,9 @@ public class MessageChatToHost implements WC3Message {
 
             ByteBuffer b = ByteBuffer.allocate(size);
             b.order(ByteOrder.LITTLE_ENDIAN);
-            b.put(Messages.HEADER);
+            b.put(WC3MessageConstant.HEADER);
 
-            b.put(Messages.CHATTOHOST);
+            b.put(WC3MessageConstant.CHATTOHOST);
             b.putShort((short) size);
 
             b.put((byte) toPlayerIDs.size());

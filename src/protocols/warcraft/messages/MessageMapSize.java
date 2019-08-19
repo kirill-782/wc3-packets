@@ -1,6 +1,6 @@
 package protocols.warcraft.messages;
 
-import protocols.warcraft.Messages;
+import protocols.warcraft.WC3MessageConstant;
 import protocols.warcraft.WC3Message;
 import protocols.warcraft.util.MapSizeFlag;
 
@@ -29,8 +29,8 @@ public class MessageMapSize implements WC3Message {
 
         ByteBuffer b = ByteBuffer.allocate(13);
 
-        b.put(Messages.HEADER);
-        b.put(Messages.MAPSIZE);
+        b.put(WC3MessageConstant.HEADER);
+        b.put(WC3MessageConstant.MAPSIZE);
         b.putShort((short) 13);
 
         b.put(unknown);

@@ -1,7 +1,7 @@
 package protocols.warcraft.messages;
 
 import protocols.warcraft.Constants;
-import protocols.warcraft.Messages;
+import protocols.warcraft.WC3MessageConstant;
 import protocols.warcraft.WC3Message;
 import protocols.warcraft.exceptions.IllegalPlayerIDException;
 
@@ -53,8 +53,8 @@ public class MessageMapPart implements WC3Message {
         ByteBuffer b = ByteBuffer.allocate(data.length + 14);
         b.order(ByteOrder.LITTLE_ENDIAN);
 
-        b.put(Messages.HEADER);
-        b.put(Messages.MAPPART);
+        b.put(WC3MessageConstant.HEADER);
+        b.put(WC3MessageConstant.MAPPART);
         b.putShort((short) (data.length + 14));
 
         b.put(this.toPlayerID);

@@ -1,7 +1,7 @@
 package protocols.warcraft.messages;
 
 import protocols.warcraft.Constants;
-import protocols.warcraft.Messages;
+import protocols.warcraft.WC3MessageConstant;
 import protocols.warcraft.WC3Message;
 import protocols.warcraft.exceptions.IllegalPlayerIDException;
 
@@ -33,8 +33,8 @@ public class MessageStartDownload implements WC3Message {
         ByteBuffer b = ByteBuffer.allocate(8);
         b.order(ByteOrder.LITTLE_ENDIAN);
 
-        b.put(Messages.HEADER);
-        b.put(Messages.STARTDOWNLOAD);
+        b.put(WC3MessageConstant.HEADER);
+        b.put(WC3MessageConstant.STARTDOWNLOAD);
         b.putShort((short) 2);
         b.putInt(1);
 

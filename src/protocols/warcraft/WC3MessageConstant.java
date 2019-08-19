@@ -1,6 +1,6 @@
 package protocols.warcraft;
 
-public interface Messages {
+public interface WC3MessageConstant {
 
     byte HEADER = (byte) 0xf7;
 

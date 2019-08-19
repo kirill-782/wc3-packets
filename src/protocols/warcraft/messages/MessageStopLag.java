@@ -1,7 +1,7 @@
 package protocols.warcraft.messages;
 
 import protocols.warcraft.Constants;
-import protocols.warcraft.Messages;
+import protocols.warcraft.WC3MessageConstant;
 import protocols.warcraft.WC3Message;
 import protocols.warcraft.exceptions.IllegalPlayerIDException;
 import protocols.warcraft.exceptions.WC3Exception;
@@ -37,8 +37,8 @@ public class MessageStopLag implements WC3Message {
         ByteBuffer b = ByteBuffer.allocate(9);
         b.order(ByteOrder.LITTLE_ENDIAN);
 
-        b.put(Messages.HEADER);
-        b.put(Messages.STOPLAG);
+        b.put(WC3MessageConstant.HEADER);
+        b.put(WC3MessageConstant.STOPLAG);
         b.putShort((short) 9);
 
         b.put(this.playerID);

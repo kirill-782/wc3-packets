@@ -1,6 +1,6 @@
 package protocols.warcraft.messages;
 
-import protocols.warcraft.Messages;
+import protocols.warcraft.WC3MessageConstant;
 import protocols.warcraft.WC3Message;
 import protocols.warcraft.util.PlayerLeaveCode;
 
@@ -26,8 +26,8 @@ public class MessageLeaveGame implements WC3Message {
         ByteBuffer b = ByteBuffer.allocate(8);
         b.order(ByteOrder.LITTLE_ENDIAN);
 
-        b.put(Messages.HEADER);
-        b.put(Messages.LEAVEGAME);
+        b.put(WC3MessageConstant.HEADER);
+        b.put(WC3MessageConstant.LEAVEGAME);
         b.putShort((short) 8);
 
         b.putInt(this.reason.getCode());
