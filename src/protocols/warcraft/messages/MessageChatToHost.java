@@ -63,7 +63,7 @@ public class MessageChatToHost implements WC3Message {
                 this.message = Util.getNullTremilanedString(b);
                 break;
             default:
-                    throw new IllegalArgumentException();
+                throw new IllegalArgumentException();
         }
     }
 
@@ -129,8 +129,9 @@ public class MessageChatToHost implements WC3Message {
             b.put((byte) toPlayerIDs.size());
             for (Byte i :
                     toPlayerIDs) {
-                if( i > Constants.MAXPLAYERS || i < 1)
-                    throw new IllegalPlayerIDException("toPlayerID", i);
+                // ToPlayerIDS FF allowed here
+//                if( i > Constants.MAXPLAYERS || i < 1)
+//                    throw new IllegalPlayerIDException("toPlayerID", i);
 
                 b.put(i);
             }

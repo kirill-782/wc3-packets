@@ -37,7 +37,7 @@ public class MessageIncomingAction implements WC3Message {
             byte[] data = new byte[actionSize];
             b.get(data);
 
-            actions.add(action);
+            actions.add(new Action().setAction(data).setPlayerID(playerID));
         }
     }
 
@@ -60,22 +60,24 @@ public class MessageIncomingAction implements WC3Message {
             b.put(i.getPlayerID());
             b.putShort((short) i.getAction().length);
             b.put(i.getAction());
-            currentSize += 1 +i.getAction().length;
+            currentSize += 3 + i.getAction().length;
         }
 
         CRC32 crc = new CRC32();
         byte[] response = new byte[currentSize];
 
         b.putShort(2, (short) currentSize);
+        b.position(0);
         b.get(response, 0, currentSize);
 
         crc.update(response, 8, currentSize - 8 );
 
-        ByteBuffer tempByffer = ByteBuffer.allocate(8);
-        b.putLong(crc.getValue());
+        ByteBuffer tempBuffer = ByteBuffer.allocate(4);
+        tempBuffer.order(ByteOrder.LITTLE_ENDIAN);
+        tempBuffer.putInt((int) crc.getValue());
 
-        response[6] = tempByffer.get(6);
-        response[7] = tempByffer.get(7);
+        response[6] = tempBuffer.get(0);
+        response[7] = tempBuffer.get(1);
 
         return response;
     }

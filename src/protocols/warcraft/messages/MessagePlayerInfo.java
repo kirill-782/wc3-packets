@@ -71,12 +71,12 @@ public class MessagePlayerInfo implements WC3Message {
         if(this.internalIP != null && this.internalIP.length != 4)
             throw new IllegalByteSizeException("internalIP", 4);
 
-        ByteBuffer b = ByteBuffer.allocate(playerNameSize + 40 );
+        ByteBuffer b = ByteBuffer.allocate(playerNameSize + 44 );
         b.order(ByteOrder.LITTLE_ENDIAN);
 
         b.put(WC3MessageConstant.HEADER);
         b.put(WC3MessageConstant.PLAYERINFO);
-        b.putShort((short) (playerNameSize + 40));
+        b.putShort((short) (playerNameSize + 44));
 
         b.putInt(this.playerPeerKey);
         b.put(this.playerID);
