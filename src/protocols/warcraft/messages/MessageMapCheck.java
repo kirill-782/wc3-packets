@@ -24,12 +24,13 @@ public class MessageMapCheck implements WC3Message {
     }
 
     public MessageMapCheck(ByteBuffer b) throws IllegalMapPathException {
+
+        b.getInt();
+
         byte[] mapPathRaw = Util.getNullTremilaned(b);
 
         if( mapPathRaw.length == 0)
             throw new IllegalMapPathException();
-
-        b.getInt();
 
         this.mapPath = new String(mapPathRaw, StandardCharsets.UTF_8);
         this.mapSize = Integer.toUnsignedLong(b.getInt());

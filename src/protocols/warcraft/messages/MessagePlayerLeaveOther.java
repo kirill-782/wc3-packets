@@ -10,10 +10,12 @@ import java.nio.ByteOrder;
 public class MessagePlayerLeaveOther implements WC3Message {
 
     private PlayerLeaveCode leftCode;
+    private byte playerID;
 
     public MessagePlayerLeaveOther(ByteBuffer b) {
         b.order(ByteOrder.LITTLE_ENDIAN);
-        this.leftCode = PlayerLeaveCode.getInstance(b.getInt(4));
+        this.playerID = b.get();
+        this.leftCode = PlayerLeaveCode.getInstance(b.getInt());
     }
 
     public MessagePlayerLeaveOther()
@@ -29,7 +31,7 @@ public class MessagePlayerLeaveOther implements WC3Message {
         b.put(WC3MessageConstant.HEADER);
         b.put(WC3MessageConstant.PLAYERLEAVEOTHERS);
         b.putShort((short) 8);
-
+        b.put(this.playerID);
         b.putInt(this.leftCode.getCode( ));
 
         return b.array();
@@ -42,6 +44,15 @@ public class MessagePlayerLeaveOther implements WC3Message {
     public MessagePlayerLeaveOther setLeftCode(PlayerLeaveCode leftCode) {
         this.leftCode = leftCode;
 
+        return this;
+    }
+
+    public byte getPlayerID() {
+        return playerID;
+    }
+
+    public MessagePlayerLeaveOther setPlayerID(byte playerID) {
+        this.playerID = playerID;
         return this;
     }
 }
