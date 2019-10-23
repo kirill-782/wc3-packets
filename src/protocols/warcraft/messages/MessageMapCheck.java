@@ -2,10 +2,10 @@ package protocols.warcraft.messages;
 
 import protocols.warcraft.WC3MessageConstant;
 import protocols.warcraft.WC3Message;
-import protocols.warcraft.exceptions.IllegalByteSizeException;
-import protocols.warcraft.exceptions.IllegalMapPathException;
-import protocols.warcraft.exceptions.WC3Exception;
-import protocols.warcraft.util.Util;
+import protocols.util.exceptions.IllegalByteSizeException;
+import protocols.util.exceptions.IllegalMapPathException;
+import protocols.util.exceptions.PacketBuildException;
+import protocols.util.Util;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -46,7 +46,7 @@ public class MessageMapCheck implements WC3Message {
 
 
     @Override
-    public byte[] assemble() throws WC3Exception {
+    public byte[] assemble() throws PacketBuildException {
         byte[] mapPathRaw = this.mapPath.getBytes(StandardCharsets.UTF_8);
 
         if( mapPathRaw.length == 0)

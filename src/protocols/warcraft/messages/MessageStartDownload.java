@@ -3,7 +3,7 @@ package protocols.warcraft.messages;
 import protocols.warcraft.Constants;
 import protocols.warcraft.WC3MessageConstant;
 import protocols.warcraft.WC3Message;
-import protocols.warcraft.exceptions.IllegalPlayerIDException;
+import protocols.util.exceptions.IllegalPlayerIDException;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

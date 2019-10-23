@@ -1,6 +1,6 @@
 package protocols.warcraft;
 
-import protocols.warcraft.exceptions.WC3Exception;
+import protocols.util.exceptions.PacketBuildException;
 
 public interface WC3Message {
 
@@ -9,5 +9,5 @@ public interface WC3Message {
      */
 
 
-    byte[] assemble() throws WC3Exception;
+    byte[] assemble() throws PacketBuildException;
 }

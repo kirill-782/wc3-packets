@@ -1,6 +1,6 @@
-package protocols.warcraft.exceptions;
+package protocols.util.exceptions;
 
-public class IllegalPlayerNameSizeException extends WC3Exception {
+public class IllegalPlayerNameSizeException extends PacketBuildException {
 
     private String field;
 

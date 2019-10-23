@@ -2,7 +2,7 @@ package protocols.warcraft.messages;
 
 import protocols.warcraft.WC3MessageConstant;
 import protocols.warcraft.WC3Message;
-import protocols.warcraft.exceptions.IllegalByteSizeException;
+import protocols.util.exceptions.IllegalByteSizeException;
 
 
 import java.nio.ByteBuffer;

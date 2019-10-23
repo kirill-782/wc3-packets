@@ -3,8 +3,8 @@ package protocols.warcraft.messages;
 import protocols.warcraft.Constants;
 import protocols.warcraft.WC3MessageConstant;
 import protocols.warcraft.WC3Message;
-import protocols.warcraft.exceptions.IllegalPlayerIDException;
-import protocols.warcraft.exceptions.WC3Exception;
+import protocols.util.exceptions.IllegalPlayerIDException;
+import protocols.util.exceptions.PacketBuildException;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -29,7 +29,7 @@ public class MessageStopLag implements WC3Message {
     }
 
     @Override
-    public byte[] assemble() throws WC3Exception {
+    public byte[] assemble() throws PacketBuildException {
 
         if (this.playerID > Constants.MAXPLAYERS || this.playerID < 1)
             throw new IllegalPlayerIDException("playerID", this.playerID);

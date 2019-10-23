@@ -1,8 +1,8 @@
-package protocols.warcraft.exceptions;
+package protocols.util.exceptions;
 
 import protocols.warcraft.Constants;
 
-public class IllegalPlayerIDException extends WC3Exception {
+public class IllegalPlayerIDException extends PacketBuildException {
     private String field;
     private byte playerID;
 

@@ -3,12 +3,12 @@ package protocols.warcraft.messages;
 import protocols.warcraft.Constants;
 import protocols.warcraft.WC3MessageConstant;
 import protocols.warcraft.WC3Message;
-import protocols.warcraft.exceptions.IllegalMessageSizeException;
-import protocols.warcraft.exceptions.IllegalPlayerIDException;
-import protocols.warcraft.exceptions.WC3Exception;
+import protocols.util.exceptions.IllegalMessageSizeException;
+import protocols.util.exceptions.IllegalPlayerIDException;
+import protocols.util.exceptions.PacketBuildException;
 import protocols.warcraft.util.ChatExtraFlag;
 import protocols.warcraft.util.ChatFlag;
-import protocols.warcraft.util.Util;
+import protocols.util.Util;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -27,7 +27,7 @@ public class MessageChatFromHost implements WC3Message {
 
     }
 
-    public MessageChatFromHost(ByteBuffer b) throws WC3Exception {
+    public MessageChatFromHost(ByteBuffer b) throws PacketBuildException {
 
         int toPlayerIDsSize = Byte.toUnsignedInt(b.get());
 
@@ -65,7 +65,7 @@ public class MessageChatFromHost implements WC3Message {
     }
 
     @Override
-    public byte[] assemble() throws WC3Exception {
+    public byte[] assemble() throws PacketBuildException {
 
         byte[] messageRaw = this.message.getBytes(StandardCharsets.UTF_8);
 

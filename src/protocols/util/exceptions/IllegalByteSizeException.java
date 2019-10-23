@@ -1,6 +1,6 @@
-package protocols.warcraft.exceptions;
+package protocols.util.exceptions;
 
-public class IllegalByteSizeException extends WC3Exception {
+public class IllegalByteSizeException extends PacketBuildException {
 
     private String field;
     private int requestSize;

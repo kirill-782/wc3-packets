@@ -45,8 +45,6 @@ public class WarcraftLikeSocket {
         } catch (Exception e) {
             this.onError.accept(e);
         }
-
-
     }
 
     public void send(ByteBuffer b) throws IOException {
@@ -136,7 +134,7 @@ public class WarcraftLikeSocket {
         return this;
     }
 
-    public WarcraftLikeSocket dissAllowHeaderConstant(byte headerConstant) {
+    public WarcraftLikeSocket disallowHeaderConstant(byte headerConstant) {
         this.allowHeaderConstant.remove(headerConstant);
         return this;
     }

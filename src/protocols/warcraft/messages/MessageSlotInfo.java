@@ -3,7 +3,7 @@ package protocols.warcraft.messages;
 import protocols.warcraft.WC3MessageConstant;
 import protocols.warcraft.Slot;
 import protocols.warcraft.WC3Message;
-import protocols.warcraft.util.Util;
+import protocols.util.Util;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
