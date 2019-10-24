@@ -2,7 +2,7 @@ package protocols.warcraft.messages;
 
 import protocols.warcraft.WC3MessageConstant;
 import protocols.warcraft.WC3Message;
-import protocols.warcraft.util.PlayerLeaveCode;
+import protocols.warcraft.entries.PlayerLeaveCode;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

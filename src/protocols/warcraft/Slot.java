@@ -1,8 +1,8 @@
 package protocols.warcraft;
 
-import protocols.warcraft.util.SlotComputerType;
-import protocols.warcraft.util.SlotRace;
-import protocols.warcraft.util.SlotStatus;
+import protocols.warcraft.entries.SlotComputerType;
+import protocols.warcraft.entries.SlotRace;
+import protocols.warcraft.entries.SlotStatus;
 
 import java.nio.ByteBuffer;
 

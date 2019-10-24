@@ -2,7 +2,7 @@ package protocols.warcraft.messages;
 
 import protocols.warcraft.WC3MessageConstant;
 import protocols.warcraft.WC3Message;
-import protocols.warcraft.util.MapSizeFlag;
+import protocols.warcraft.entries.MapSizeFlag;
 
 import java.nio.ByteBuffer;
 

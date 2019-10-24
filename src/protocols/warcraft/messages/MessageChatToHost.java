@@ -6,8 +6,8 @@ import protocols.warcraft.WC3Message;
 import protocols.util.exceptions.IllegalMessageSizeException;
 import protocols.util.exceptions.IllegalPlayerIDException;
 import protocols.util.exceptions.PacketBuildException;
-import protocols.warcraft.util.ChatExtraFlag;
-import protocols.warcraft.util.ChatFlag;
+import protocols.warcraft.entries.ChatExtraFlag;
+import protocols.warcraft.entries.ChatFlag;
 import protocols.util.Util;
 
 import java.nio.ByteBuffer;

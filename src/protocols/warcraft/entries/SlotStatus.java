@@ -1,4 +1,4 @@
-package protocols.warcraft.util;
+package protocols.warcraft.entries;
 
 public enum SlotStatus {
     OPEN((byte) 0),
