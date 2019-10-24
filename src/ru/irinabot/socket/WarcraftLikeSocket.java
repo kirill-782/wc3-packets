@@ -5,11 +5,14 @@ import ru.irinabot.socket.exceptions.InvalidPacketSize;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.nio.channels.ClosedChannelException;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.function.Consumer;
 
 public class WarcraftLikeSocket {
@@ -23,6 +26,10 @@ public class WarcraftLikeSocket {
     private ByteBuffer readBuffer;
     private SelectionKey selectionKey;
 
+    private Queue<WarcraftLikePacket> packetQueue = new PriorityQueue<>();
+
+    private long lastPacketRecv = 0;
+
     public WarcraftLikeSocket(SocketChannel socket, Selector selector, int outBufferSize, int inBufferSize) throws IOException {
         this.readBuffer = ByteBuffer.allocate(inBufferSize);
         this.readBuffer.limit(4);
@@ -32,8 +39,19 @@ public class WarcraftLikeSocket {
 
         this.socket = socket;
         this.socket.configureBlocking(false);
+    }
 
-        this.selectionKey = socket.register(selector, SelectionKey.OP_READ);
+    public void setSelector( Selector selector ) throws ClosedChannelException {
+
+        if(this.selectionKey != null)
+            this.selectionKey.cancel();
+
+        this.selectionKey = socket.register(selector, SelectionKey.OP_READ, this);
+    }
+
+    public void clearPacketBuffer( )
+    {
+        this.packetQueue.clear();
     }
 
     public void onSelected() {
@@ -115,17 +133,33 @@ public class WarcraftLikeSocket {
             if (this.readBuffer.position() == Short.toUnsignedInt(this.readBuffer.getShort(2))) {
                 // Прочитан весь пакет
 
-                this.onPacket.accept(new WarcraftLikePacket(
+                this.lastPacketRecv = System.currentTimeMillis();
+
+                WarcraftLikePacket packet = new WarcraftLikePacket(
                         this.readBuffer.get(0),
                         this.readBuffer.get(1),
                         ByteBuffer.wrap(this.readBuffer.array(), 4, Short.toUnsignedInt(this.readBuffer.getShort(2) ) - 4)
-                ) ); // Закостылю позже
+                );
+
+                if(this.onPacket != null && this.packetQueue.isEmpty())
+                    this.onPacket.accept( packet );
+                else
+                    this.packetQueue.add(packet);
 
                 // Настраимваем на чтение заголовка
 
                 this.readBuffer.position(0);
                 this.readBuffer.limit(4);
             }
+        }
+    }
+
+    public void releaseQueue( )
+    {
+        while (!this.packetQueue.isEmpty())
+        {
+            WarcraftLikePacket packet = this.packetQueue.remove();
+            this.onPacket.accept(packet);
         }
     }
 
@@ -148,5 +182,15 @@ public class WarcraftLikeSocket {
         this.onPacket = onPacket;
         return this;
     }
+
+    public SocketChannel getSocket() {
+        return socket;
+    }
+
+    public long getLastPacketRecv() {
+        return lastPacketRecv;
+    }
+
+
 }
 
