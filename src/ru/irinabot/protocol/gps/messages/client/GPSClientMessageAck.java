@@ -1,7 +1,7 @@
 package ru.irinabot.protocol.gps.messages.client;
 
-import ru.irinabot.protocol.gps.GPSIMessageConstant;
 import ru.irinabot.protocol.gps.GPSMessage;
+import ru.irinabot.protocol.gps.GPSMessageConstant;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -23,8 +23,8 @@ public class GPSClientMessageAck implements GPSMessage {
         ByteBuffer b = ByteBuffer.allocate(8);
         b.order(ByteOrder.LITTLE_ENDIAN);
 
-        b.put(GPSIMessageConstant.HEADER);
-        b.put(GPSIMessageConstant.ACK);
+        b.put(GPSMessageConstant.HEADER);
+        b.put(GPSMessageConstant.ACK);
         b.putShort((short) 8);
 
         b.putInt(this.lastPacket);

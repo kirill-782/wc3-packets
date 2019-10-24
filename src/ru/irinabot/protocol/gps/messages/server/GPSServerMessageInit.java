@@ -1,7 +1,7 @@
 package ru.irinabot.protocol.gps.messages.server;
 
-import ru.irinabot.protocol.gps.GPSIMessageConstant;
 import ru.irinabot.protocol.gps.GPSMessage;
+import ru.irinabot.protocol.gps.GPSMessageConstant;
 import ru.irinabot.util.exceptions.PacketBuildException;
 
 import java.nio.ByteBuffer;
@@ -29,8 +29,8 @@ public class GPSServerMessageInit implements GPSMessage {
         ByteBuffer b = ByteBuffer.allocate(14);
         b.order(ByteOrder.LITTLE_ENDIAN);
 
-        b.put(GPSIMessageConstant.HEADER);
-        b.put(GPSIMessageConstant.INIT);
+        b.put(GPSMessageConstant.HEADER);
+        b.put(GPSMessageConstant.INIT);
         b.putShort((short) 14);
         b.putShort((short) reconnectPort);
         b.put(this.playerID);
