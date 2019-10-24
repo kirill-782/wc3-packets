@@ -5,7 +5,8 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import protocols.warcraft.exceptions.WC3Exception;
+import ru.irinabot.protocol.w3gs.messages.W3GSMessageChatFromHost;
+import ru.irinabot.util.exceptions.PacketBuildException;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -29,11 +30,11 @@ public class MessageChatFromHostTest {
     }
 
     @Test
-    public void assemble() throws WC3Exception {
+    public void assemble() throws PacketBuildException {
         ByteBuffer b = ByteBuffer.wrap(this.chatFromHostData);
         b.order(ByteOrder.LITTLE_ENDIAN);
         b.position(4);
-        MessageChatFromHost messageChatFromHost = new MessageChatFromHost(b);
+        W3GSMessageChatFromHost messageChatFromHost = new W3GSMessageChatFromHost (b);
         Assert.assertArrayEquals(this.chatFromHostData, messageChatFromHost.assemble());
     }
 
