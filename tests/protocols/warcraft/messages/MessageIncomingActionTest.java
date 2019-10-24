@@ -3,6 +3,7 @@ package protocols.warcraft.messages;
 import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;
 import org.junit.Assert;
 import org.junit.Test;
+import ru.irinabot.protocol.w3gs.messages.W3GSMessageIncomingAction;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -20,7 +21,7 @@ public class MessageIncomingActionTest {
         b.position(4);
         b.order(ByteOrder.LITTLE_ENDIAN);
 
-        MessageIncomingAction messageIncomingAction = new MessageIncomingAction(b);
+        W3GSMessageIncomingAction messageIncomingAction = new W3GSMessageIncomingAction(b);
 
         Assert.assertArrayEquals(bytes, messageIncomingAction.assemble());
     }
