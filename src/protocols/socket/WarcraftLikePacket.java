@@ -3,9 +3,9 @@ package protocols.socket;
 import java.nio.ByteBuffer;
 
 public class WarcraftLikePacket {
-    byte headerConstant;
-    byte command;
-    ByteBuffer data;
+    private byte headerConstant;
+    private byte command;
+    private ByteBuffer data;
 
     public WarcraftLikePacket(byte headerConstant, byte command, ByteBuffer data) {
         this.headerConstant = headerConstant;
