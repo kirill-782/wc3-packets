@@ -4,6 +4,7 @@ import ru.irinabot.protocol.w3gs.W3GSMessageConstant;
 import ru.irinabot.protocol.w3gs.W3GSMessage;
 import ru.irinabot.util.exceptions.IllegalByteSizeException;
 import ru.irinabot.util.exceptions.IllegalPlayerNameSizeException;
+import ru.irinabot.util.exceptions.IllegalPortException;
 import ru.irinabot.util.exceptions.PacketBuildException;
 import ru.irinabot.util.Util;
 
@@ -52,6 +53,9 @@ public class W3GSMessageReqJoin implements W3GSMessage {
 
         if( nameRaw.length > 15 || nameRaw.length == 0)
             throw new IllegalPlayerNameSizeException("playerName");
+
+        if(this.listenPort > 0xffff)
+            throw new IllegalPortException( this.listenPort );
 
         ByteBuffer b = ByteBuffer.allocate( nameRaw.length + 30);
         b.order(ByteOrder.LITTLE_ENDIAN);

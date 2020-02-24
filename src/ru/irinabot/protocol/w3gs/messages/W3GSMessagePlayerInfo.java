@@ -4,6 +4,7 @@ import ru.irinabot.protocol.w3gs.W3GSMessageConstant;
 import ru.irinabot.protocol.w3gs.W3GSMessage;
 import ru.irinabot.util.exceptions.IllegalByteSizeException;
 import ru.irinabot.util.exceptions.IllegalPlayerNameSizeException;
+import ru.irinabot.util.exceptions.IllegalPortException;
 import ru.irinabot.util.exceptions.PacketBuildException;
 import ru.irinabot.util.Util;
 
@@ -65,11 +66,17 @@ public class W3GSMessagePlayerInfo implements W3GSMessage {
             throw new IllegalPlayerNameSizeException("playerName");
         }
 
-        if(this.internalIP != null && this.extrenalIP.length != 4)
+        if(this.extrenalIP != null && this.extrenalIP.length != 4)
             throw new IllegalByteSizeException("externalIP", 4);
 
         if(this.internalIP != null && this.internalIP.length != 4)
             throw new IllegalByteSizeException("internalIP", 4);
+
+        if(this.intrenalPort > 0xffff)
+            throw new IllegalPortException( this.intrenalPort );
+
+        if(this.externalPort > 0xffff)
+            throw new IllegalPortException( this.externalPort );
 
         ByteBuffer b = ByteBuffer.allocate(playerNameSize + 44 );
         b.order(ByteOrder.LITTLE_ENDIAN);
@@ -96,7 +103,6 @@ public class W3GSMessagePlayerInfo implements W3GSMessage {
             b.putInt(0);
 
         b.putLong(0);
-
 
         b.put((byte) 2);
         b.put((byte) 0);
