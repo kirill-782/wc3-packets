@@ -55,5 +55,26 @@ public class Util {
         return new String(getNullTremilaned(b), Charset.forName("UTF-8"));
     }
 
+    public static int strlen(ByteBuffer b)
+    {
+        int start = b.position();
+        int len = 0;
 
+        while (b.get() != 0)
+            len++;
+
+        b.position(start);
+
+        return len;
+    }
+
+    public static int strlen(byte[] b, int start)
+    {
+        int len = 0;
+
+        while (b[start++] != 0)
+            len++;
+
+        return len;
+    }
 }
