@@ -4,6 +4,9 @@ public interface W3GSMessageConstant {
 
     byte HEADER = (byte) 0xf7;
 
+    byte[] ROC = {51, 82, 65, 87};
+    byte[] TFT = {80, 88, 51, 87};
+
     /**
      * UDP Messages.
      */
