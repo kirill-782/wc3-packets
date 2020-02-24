@@ -6,7 +6,7 @@ import ru.irinabot.protocol.w3gs.entries.SlotStatus;
 
 import java.nio.ByteBuffer;
 
-public class Slot {
+public class Slot implements Cloneable{
 
     private byte playerID = 0;
     private byte downloadStatus = 0;
@@ -48,6 +48,14 @@ public class Slot {
         b.put(this.computerType.toByte());
         b.put(this.handicap);
         return b.array();
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        Slot newSlot = (Slot) super.clone();
+
+        newSlot.race = (SlotRace) this.race.clone();
+        return newSlot;
     }
 
     public byte getPlayerID() {

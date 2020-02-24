@@ -1,13 +1,13 @@
 package ru.irinabot.protocol.w3gs.entries;
 
-public class SlotRace {
+public class SlotRace implements Cloneable {
 
-    static final byte HUMAN = 1;
-    static final byte ORC = 2;
-    static final byte NIGTELF = 4;
-    static final byte UNDEAD = 8;
-    static final byte RANDOM = 32;
-    static final byte SELECTABLE = 64;
+    static public final byte HUMAN = 1;
+    static public final byte ORC = 2;
+    static public final byte NIGTELF = 4;
+    static public final byte UNDEAD = 8;
+    static public final byte RANDOM = 32;
+    static public final byte SELECTABLE = 64;
 
     private boolean selectable = false;
     private byte race = 0;
@@ -66,6 +66,11 @@ public class SlotRace {
 
         if( this.race == 0 )
             throw new IllegalArgumentException( "Unknown race given." );
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 
     public byte getFlag()
