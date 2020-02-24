@@ -25,12 +25,14 @@ public class W3GSMessageIncomingAction implements W3GSMessage {
     {
         this.sendInterval = Short.toUnsignedInt(b.getShort());
 
+        if(!b.hasRemaining())
+            return;
+
         this.crc32 = new byte[2];
         b.get(this.crc32);
 
         while(b.hasRemaining())
         {
-            Action action = new Action();
             byte playerID = b.get();
 
             int actionSize = Short.toUnsignedInt(b.getShort());

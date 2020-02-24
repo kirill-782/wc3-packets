@@ -26,6 +26,7 @@ public class W3GSMessageGameLoadedSelf implements W3GSMessage {
 
         b.put(W3GSMessageConstant.HEADER);
         b.put(W3GSMessageConstant.GAMELOADEDSELF);
+        b.putShort((short) 4);
 
         return b.array();
     }
