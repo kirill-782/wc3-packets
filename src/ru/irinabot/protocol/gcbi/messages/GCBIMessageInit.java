@@ -9,15 +9,6 @@ import java.nio.ByteOrder;
 
 public class GCBIMessageInit implements GCBIMessage {
 
-
-    // 2 bytes					-> Header
-    // 2 bytes					-> Length
-    // 4 bytes					-> actual IP address (big endian)
-    // 4 bytes					-> Garena user ID (big endian)
-    // 4 bytes					-> Garena room ID (big endian)
-    // 4 bytes					-> Garena user experience (big endian)
-    // 2 bytes					-> country string from Garena
-
     private byte[] remoteIP = new byte[4];
     private int userID;
     private int roomID;
